@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="public/images/logotemp.png" rel="shortcut icon">
+    <title>MAT</title>
+<link rel="stylesheet" href="public/css/bootstrap.min.css">
+<script src="public/scripts/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script src="public/scripts/bootstrap.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.eot">
+<link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.woff">
+<link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.woff2">
+<link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.ttf">
+<link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="navbar">
+  <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+      
+        <a href="index.html"><img src="public/images/logotemp.png" style="width:50%;height:auto;"></a>
+        <a class="navbar-brand" href="index.html">Home</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown active">
+          <a href="mat.html" class="dropdown-toggle" data-toggle="dropdown" >MAT<b class="caret"></b></a> 
+          <ul class="dropdown-menu">
+            <li class="kopie"><a href="mat.html">Features</a></li>
+            <li><a href="#">Missing Residues</a></li>
+            <li class="active"><a href="#">Salt Bridge</a></li>
+            <li><a href="#">PDB to FASTA</a></li>
+            <li><a href="#">Active Site</a></li>
+            <li><a href="#">Metal Interaction</a></li>
+            <li><a href="#">PDB Remodelling</a></li>
+            <li><a href="#">Protein Slicer</a></li>
+          </ul>
+        </li>
+        <li><a class="navbar-brand" href="#">Science</a></li>
+        <li><a class="navbar-brand" href="documentation.html">Documentation</a></li>
+        <li><a class="navbar-brand" href="downloads.html">Downloads</a></li>
+        <li><a class="navbar-brand" href="#">Publication</a></li>
+        <li><a class="navbar-brand" href="#">About</a></li>
+            
+      </ul>
+    </div>
+      </div>
+    <!-- /.navbar-collapse -->
+  </nav>
+</div>
+
+ 
+ <div class="container-fluid">
+    <div class="row">
+
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+            <h3> Macromolecular Analysis Toolkit (MAT)</h3>
+	    <hr><br>
+<p>
+<!b Contents
+1. PDB Parser
+2. Data Structure Heirarchy
+3. Applications>
+
+<p>
+<b>Introduction</b> <br>
+Macromolecular structure based information may be stored in two states: dynamic and static. The experimentally deduced structures are stored in an online database known as the Protein Data Bank: PDB. 
+
+Every PDB file is presented in number of lines. Each line consists of 80 columns and terminated by an end-of-line indicator.
+
+Our focus is to simplify the PDB format such that we could make use of most of the information present in the PDB files. From our experience we have realize that a lot of information depicted in the REMARK part of the PDB file is generally overlooked due to extremely textual nature and thus making it hard to be utilized computationally. However, some of the points could be very vital for research point of view of some users. So we have decided to highlight some of the very important aspects among those information and presented it nicely.
+
+Secondly, we also aim to overcome the limitations of PDB. For this, we introduce remodeling of PDB file such that a number of useful information is added and redundancy is eliminated.
+
+Lastly, a number of new applications are developed to analyze the structural and functional aspects of the biological structures. These are made by implementing inter-disciplinary algorithms and by use of various task oriented data-structures such as kd-tree, octree and 3D grids. 
+<br> <br>
+<b>Motivation:</b><br>
+
+New techniques and algorithms are being developed every day for analyzing the protein and understanding its function better. Such algorithms have not yet been implemented and transformed into computer programs. We want to make a toolkit where such functions- old and new are available in one environment for the complete analysis. 
+Overcoming limitations of PDB. A few Problems with PDB format have been listed in the table:
+
+<table border="1">
+<tr>
+<td rowspan="9">PDB format faults</td>
+<tr><td>Presence of dummy coordinates, identical coordinates</td><tr>
+<tr><td>Atomic occupancies larger than 1.00 or even negative</td></tr>
+<tr><td>Use of different ligand names for water molecule i.e. H2O, WAT, HOH, etc</td></tr>
+<tr><td>Presence of solvents which are there only because of experimental techniques</td></tr>
+<tr><td>Use of different ligand name for same small molecule</td></tr>
+<tr><td>Number of atoms that can be included in file is limited to 99999, 9999 for amino acids and 62 for chains</td></tr>
+<tr><td>Textual descriptions are not computationally accessible and cannot be easily utilized to automatically generate the complete assembly</td></tr>
+
+
+<tr>
+<td rowspan="6">Structural Faults</td>
+<tr><td>Atoms too close to each other resulting in close contacts</td><tr>
+<tr><td>Un-natural dihedral angles</td></tr>
+<tr><td>Connectivity between atoms is wrong</td></tr>
+<tr><td>Contradictory Uniprot and Structural sequence</td></tr>
+<tr>
+
+<tr>
+<td rowspan="5">Structural faults that can not be corrected</td>
+<tr><td>Missing coordinates</td><tr>
+<tr><td>Electron density does not match with the coordinate</td></tr>
+<tr><td>Experimental errors</td></tr>
+<tr>
+</table>
+<br><br>
+<b>Approach and Methods:</b><br>
+We apply concepts of mathematics and computer science to improve the existing tools and build new applications for analysis. We have already developed a PDB parser in MAT which works faster than currently available parsers. The relevance of these applications is highly apt and crucial for interpretation of results. Some of the applications are listed with their approach.
+
+
+
+	</div>
+
+    </div>
+</div>   
+
+
+
+    
+    
+
+ <footer style="background-color:black;position:relative;bottom:0;width:100%;"> 
+     <div class="container" style="margin:0 auto;color:white;font-size:14px;">
+         <ul class="nav navbar-nav" style="color:Gray;text-align:center;">
+             <li ><a class="navbar-brand" href="contact.html"> | About Us | </a></li>
+             <li ><a class="navbar-brand" href="contact.html"> | Join Us | </a></li>
+             <li ><a class="navbar-brand" href="#"> | Feedback | </a></li>
+             <li ><a class="navbar-brand" href="#"> | Project Info | </a></li>
+             <li ><a class="navbar-brand" href="#"> | Follow Us | </a></li>
+             <li ><a class="navbar-brand" href="#"> | Related Links | </a></li>
+             </ul>
+     </div>
+     <hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
+     <p style="color:gray;text-align:center;font-size:12px;">©  Copyright 2015-2016, The MAT Project, Hazra Lab.</p>
+</footer>
+
+</body>
+</html>
