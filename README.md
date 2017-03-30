@@ -1,6 +1,6 @@
 # MAT
 Professional site skeleton
-There are now 2 pages :-
+There are now 6 pages :-
 #  Home
     This will contain High resolution pictures of proteins(or something similar), all links to navigate through the website, and news and annoucements. Footer shows the meta perspective of the project. 
 #  MAT Gateway
