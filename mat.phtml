@@ -64,7 +64,7 @@
 
 <div class="container" style="margin:0 auto">
     <!--<input  type ="file" accept=".pdb" id="pdb_file" name ="file">-->
-           <form>
+           <form action="result.phtml" method="post">
         <div class="form-group">
     <label for="exampleInputFile">PDB File</label>
     <input type="file" class="form-control-file" id="exampleInputFile" name ="file" aria-describedby="fileHelp">
@@ -81,7 +81,7 @@
        
                <div class="form-check">
           <label class="form-check-label">
-              <input class="form-check-input" type="checkbox">  Salt Bridge<hr>
+              <input class="form-check-input" type="checkbox" name="salt" value="-j">  Salt Bridge<hr>
               <div class=summary>
         <p align = "justify"> <b> Find which Atoms form Salt Bridge </b> <br>
 	This feature calculates the <i>stabilizing</i> as well as <i>destabilizing</i> salt bridges.
@@ -137,20 +137,9 @@
     	</div>
           </label>
             </div>
-           </form>
-                
-    
-    
-    
-    <form action="result.phtml" style="padding-bottom:20px;" > 
-      
-                    <!--<button type="submit" class="btn btn-primary" >Submit And Get Results</button> -->
+           
+                    
         <center><button type="submit" class="ladda-button" data-style="expand-right" style="margin-bottom:10px;"><span class="ladda-label">Submit And Get Results</span></button></center>
-    
-            <?php 
-		      $option = "-j";
-              include ('gazal_script1.php');
-    	    ?>
                 </form> 
     </div>
  
