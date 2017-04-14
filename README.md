@@ -8,4 +8,5 @@ There are now 6 pages :-
     This where the user will upload the file and choose what all features to be used to process the file and provide the results on a new page in systematic manner.
 #  Other pages   //Under construction
     These will be content rich and would also provide the open source stuff that the project contributors made.
+#   Thank you
     
