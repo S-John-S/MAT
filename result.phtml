@@ -85,8 +85,18 @@
       <h4 class="media-heading">Results</h4>
       <div class="scroll-box" >
     	    <?php 
-		      $option = "-j";
-              include ('public/php/gazal_script2.php');
+		      $pdb_file = "inputfile.pdb";
+          move_uploaded_file($_FILES['file']['tmp_name'], $pdb_file);
+          if (isset($_POST['salt'])){        
+          passthru("pdb_std -i $pdb_file $_POST['salt'] > $output 2>&1");
+          $output_file = fopen(getcwd()."/".$output, "r");
+          $content = fread($output_file, filesize(getcwd()."/".$output));
+          $lines = explode("\n", $content);
+          fclose($output_file);
+          foreach ( $lines as $line ) {
+          echo $line . "<br/>";
+          }
+          }
     	    ?>
     	    </div>
     </div>
