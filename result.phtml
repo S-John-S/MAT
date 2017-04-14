@@ -16,7 +16,7 @@
 		NGL.mainScriptFilePath = "public/scripts/ngl.embedded.min.js";
 		function onInit(){
 			var stage = new NGL.Stage( "viewport" );
-			stage.loadFile( "rcsb://1crn", { defaultRepresentation: true } );
+			stage.loadFile( "inputfile.pdb", { defaultRepresentation: true } );
 		}
 		document.addEventListener( "DOMContentLoaded", function() {
 			NGL.init( onInit );
