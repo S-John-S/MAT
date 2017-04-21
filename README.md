@@ -9,9 +9,4 @@ There are now 6 pages :-
 <h2>Other pages   //Under construction </h2>
     These will be content rich and would also provide the open source stuff that the project contributors made.
 <<<<<<< HEAD
-#Thank you!!   
- 
-=======
-Thank you
-    
->>>>>>> ebc176cdfb631f8f2c1376a41a018e1bf1dbd385
+#Thank you!!  
