@@ -1,10 +1,10 @@
-<?php   
+ <?php   
 error_reporting(E_ALL);
 $output = output_file;
-
-if ( !empty($_POST['feature'][3]) )
+$pdb_file = "inputfile.pdb";
+if ( !empty($_POST['feature'][5]) )
 {
-	passthru("pdb_std -i $pdb_file -b > $output 2>&1");
+	passthru("pdb_std -i $pdb_file -c > $output 2>&1");
 	$output_file = fopen(getcwd()."/".$output, "r");
 	$content = fread($output_file, filesize(getcwd()."/".$output));
 	$lines = explode("\n", $content);
@@ -17,4 +17,4 @@ if ( !empty($_POST['feature'][3]) )
 	echo "N/A";
 }
  ?> 
- 
+

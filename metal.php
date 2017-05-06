@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 $output = output_file;
 $pdb_file = "inputfile.pdb";
 
-if ( isset($_POST['feature'][2]) )
+if ( !empty($_POST['feature'][2]) )
 {
 	passthru("pdb_std -i $pdb_file -x > $output 2>&1");
 	$output_file = fopen(getcwd()."/".$output, "r");
