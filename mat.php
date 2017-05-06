@@ -55,7 +55,7 @@
            <form action="result.php" method="post">
         <div class="form-group">
     <label for="exampleInputFile">PDB File</label>
-    <input type="file" class="form-control-file" id="pdb_file" id="exampleInputFile" name ="file" aria-describedby="fileHelp">
+    <input type="file" class="form-control-file" id="pdb_file" name ="file" aria-describedby="fileHelp">
   </div>
     <div class="form-group" style="width:20%">
     <label for="exampleInputEmail1">PDB ID</label>
