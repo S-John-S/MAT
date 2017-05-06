@@ -55,7 +55,7 @@
            <form action="result.php" method="post">
         <div class="form-group">
     <label for="exampleInputFile">PDB File</label>
-    <input type="file" class="form-control-file" id="exampleInputFile" name ="file" aria-describedby="fileHelp">
+    <input type="file" class="form-control-file" id="pdb_file" id="exampleInputFile" name ="file" aria-describedby="fileHelp">
   </div>
     <div class="form-group" style="width:20%">
     <label for="exampleInputEmail1">PDB ID</label>
@@ -82,6 +82,11 @@
         <div class="form-check">
           <label class="form-check-label">
               <input class="form-check-input" type="checkbox" name="feature[]" id="feature" value="slicer">  Protein Slicer<hr>
+              
+              <div class="summary">
+        	<p align = "justify">	<b>//Under construction</b>   <br>
+		</p>
+		</div>              
           </label>
             </div><hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
         <div class="form-check">
