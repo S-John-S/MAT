@@ -52,37 +52,49 @@
 
 <pre>      Salt Bridge      </pre>
 <div style="width:50%;height:200px;overflow:scroll;">
-
+<?php 
+              include ('salt.php');
+?>   
 </div>
 
 <hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
 <pre>      Protein Slicer      </pre>
 <div style="width:50%;height:200px;overflow:scroll;">
-
+<?php 
+              include ('slicer.php');
+?> 
 </div>
 
 <hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
 <pre>      Metal Interaction      </pre>
 <div style="width:50%;height:200px;overflow:scroll;">
-
+<?php 
+              include ('metal.php');
+?> 
 </div>
 
 <hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
 <pre>      Missing Residues      </pre>
 <div style="width:50%;height:200px;overflow:scroll;">
-
+<?php 
+              include ('missing.php');
+?> 
 </div>
 
 <hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
 <pre>      PDB to Fasta      </pre>
 <div style="width:50%;height:200px;overflow:scroll;">
-
+<?php 
+              include ('fasta.php');
+?> 
 </div>
 
 <hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
 <pre>      Active Sites      </pre>
 <div style="width:50%;height:200px;overflow:scroll;">
-
+<?php 
+              include ('active.php');
+?> 
 </div>
 
 <hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
