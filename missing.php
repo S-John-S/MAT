@@ -1,7 +1,7 @@
 <?php   
 error_reporting(E_ALL);
 $output = output_file;
-
+$pdb_file = "inputfile.pdb";
 if ( isset($_POST['feature'][3]) )
 {
 	passthru("pdb_std -i $pdb_file -b > $output 2>&1");
