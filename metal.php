@@ -1,11 +1,9 @@
 <?php   
 error_reporting(E_ALL);
 $output = output_file;
-$pdb_file = "inputfile.pdb";
-
-if ( !empty($_POST['feature'][2]) )
+if ( !empty($_POST['feature_metal']) )
 {
-	passthru("pdb_std -i $pdb_file -x > $output 2>&1");
+	passthru("./pdb_std -i inputfile.pdb -x > $output 2>&1");
 	$output_file = fopen(getcwd()."/".$output, "r");
 	$content = fread($output_file, filesize(getcwd()."/".$output));
 	$lines = explode("\n", $content);
@@ -15,7 +13,7 @@ if ( !empty($_POST['feature'][2]) )
         	}
  }
     else {
-	echo "N/A";
+	echo "Option 3 unselected or N/A";
 }
  ?> 
  

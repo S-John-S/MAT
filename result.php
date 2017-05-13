@@ -49,8 +49,8 @@
     <!-- /.navbar-collapse -->
   </nav>
 </div>
-
-<pre>      Salt Bridge      </pre>
+<center><b>
+<pre style="width:50%;"><h3 style="color:blue;">      SALT BRIDGE      </h3></pre>
 <div style="width:50%;height:200px;overflow:scroll;">
 <?php 
               include ('salt.php');
@@ -58,15 +58,15 @@
 </div>
 
 <hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
-<pre>      Protein Slicer      </pre>
-<div style="width:50%;height:200px;overflow:scroll;">
+<pre style="width:50%;"><h3 style="color:blue;">      PROTEIN SLICER      </h3></pre>
+<div style="width:80%;height:400px;overflow:scroll;text-align:justify;">
 <?php 
               include ('slicer.php');
-?> 
+?>
 </div>
 
 <hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
-<pre>      Metal Interaction      </pre>
+<pre style="width:50%;"><h3 style="color:blue;">      METAL INTERACTION      </h3></pre>
 <div style="width:50%;height:200px;overflow:scroll;">
 <?php 
               include ('metal.php');
@@ -74,7 +74,7 @@
 </div>
 
 <hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
-<pre>      Missing Residues      </pre>
+<pre style="width:50%;"><h3 style="color:blue;">      MISSING RESIDUES      </h3></pre>
 <div style="width:50%;height:200px;overflow:scroll;">
 <?php 
               include ('missing.php');
@@ -82,7 +82,7 @@
 </div>
 
 <hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
-<pre>      PDB to Fasta      </pre>
+<pre style="width:50%;"><h3 style="color:blue;">      PDB TO FASTA      </h3></pre>
 <div style="width:50%;height:200px;overflow:scroll;">
 <?php 
               include ('fasta.php');
@@ -90,7 +90,7 @@
 </div>
 
 <hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
-<pre>      Active Sites      </pre>
+<pre style="width:50%;"><h3 style="color:blue;">      ACTIVE SITES      </h3></pre>
 <div style="width:50%;height:200px;overflow:scroll;">
 <?php 
               include ('active.php');
@@ -98,7 +98,7 @@
 </div>
 
 <hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
- 
+ </b></center>
     
 
     

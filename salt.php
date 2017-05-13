@@ -10,9 +10,10 @@ move_uploaded_file($_FILES['file']['tmp_name'], $pdb_file);
 }
 
 
-if ( !empty($_POST['feature'][0]) )
+if ( !empty($_POST['feature_salt']) )
 {
-	passthru("pdb_std -i $pdb_file -j > $output 2>&1");
+	
+	passthru("./pdb_std -i inputfile.pdb -j > $output 2>&1");
 	$output_file = fopen(getcwd()."/".$output, "r");
 	$content = fread($output_file, filesize(getcwd()."/".$output));
 	$lines = explode("\n", $content);
@@ -21,7 +22,17 @@ if ( !empty($_POST['feature'][0]) )
         	echo $line . "<br/>";
         	}
  }
-    else {
-	echo "N/A";
+    elseif ( !empty($_POST['pdb_id']))
+{
+	$pdb_id = $_POST['pdb_id'];
+	
+	passthru("./pdb_std -p $pdb_id -j > $output 2>&1"); 
+
+	$output = str_replace("'", "", $output);
+	$output_file = fopen(getcwd()."/".$output, "r") ;
+	echo fread($output_file, filesize(getcwd()."/".$output));
+	fclose($output_file);
+} else{
+	echo "Option 1 unselected or N/A";
 }
  ?> 

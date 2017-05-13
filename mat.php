@@ -52,14 +52,21 @@
 
 <div class="container" style="margin:0 auto">
     <!--<input  type ="file" accept=".pdb" id="pdb_file" name ="file">-->
-           <form action="result.php" method="post">
+           <form action="result.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
     <label for="exampleInputFile">PDB File</label>
-    <input type="file" class="form-control-file" id="pdb_file" name ="file" aria-describedby="fileHelp">
+    <input type="file" class="form-control-file" id="pdb_file" accept=".pdb" name ="file" aria-describedby="fileHelp">
   </div>
+  
+  <div class="form-group">
+  <label for="exampleInputFile">FASTA File <font color="red">(INPUT for PROTEIN SLICER)</font> </label>
+  <input  type ="file" class="form-control-file" id="fasta_file" accept=".fasta" name ="f_file" aria-describedby="ffileHelp">
+  </div>  
+  
+  
     <div class="form-group" style="width:20%">
     <label for="exampleInputEmail1">PDB ID</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="//Under Construction" maxlength="4" ><br>
+    <input type="text" class="form-control" id="pdb_id" name="pdb_id" aria-describedby="emailHelp" placeholder=" (For Salt Bridge ONLY)" maxlength="4" ><br>
     
   </div>
                 <div class="form-group">
@@ -69,7 +76,7 @@
        
                <div class="form-check">
           <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" name="feature[]" id="feature" value="salt">  Salt Bridge<hr>
+              <input class="form-check-input" type="checkbox" name="feature_salt" id="feature" value="salt">  Salt Bridge<hr>
               <div class=summary>
         <p align = "justify"> <b> Find which Atoms form Salt Bridge </b> <br>
 	This feature calculates the <i>stabilizing</i> as well as <i>destabilizing</i> salt bridges.
@@ -81,17 +88,21 @@
             </div><hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
         <div class="form-check">
           <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" name="feature[]" id="feature" value="slicer">  Protein Slicer<hr>
+              <input class="form-check-input" type="checkbox" name="feature_slicer" id="feature" value="slicer">  Protein Slicer<hr>
               
               <div class="summary">
-        	<p align = "justify">	<b>//Under construction</b>   <br>
+        	<p align = "justify">	<p> Please check one enzyme from list </p>
+            <input class="form-check-input" type="checkbox" name="enz" value="ArgC"> Arg-C <br>
+            <input class="form-check-input" type="checkbox" name="enz" value="AspN"> Asp-N <br>
+            <input class="form-check-input" type="checkbox" name="enz" value="LysC"> Lys-C <br>
+            <input class="form-check-input" type="checkbox" name="enz" value="LysN"> Lys-N <br>    <br>
 		</p>
 		</div>              
           </label>
             </div><hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
         <div class="form-check">
           <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" name="feature[]" id="feature" value="metal">  Metal Interaction<hr>
+              <input class="form-check-input" type="checkbox" name="feature_metal" id="feature" value="metal">  Metal Interaction<hr>
               <div class="summary">
         	<p align = "justify">	<b>Find which atoms are interacting with metals.</b>   <br>
 		Metals are very important part of the protein structure & specially important for their role in biology for their function. Our initiation here is to identify the interacting aminoacid residues of the protein to understand the molecular level interaction. 	
@@ -101,7 +112,7 @@
             </div><hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
             <div class="form-check">
           <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" name="feature[]" id="feature" value="missing">  Missing Residues<hr>
+              <input class="form-check-input" type="checkbox" name="feature_missing" id="feature" value="missing">  Missing Residues<hr>
               <p align = "justify"> <b>Missing residues identification</b>
 	<i>Arg, Lys, Glu, Asp, </i> etc are relatively long chain aminoacid residues, so when they situate in surface they render extra flexibility. Because of this extra flexibility many times it become difficult to model the entire side chain of those residues while solving the structure using method of X-ray crystallography. Crystallographers use to model <i>Ala</i> so that at least the chiral position could be determined in the structure that sometimes mislead people to relate that PDB structure with biology. Here our effort is to display those residues which are modeled as <i>Ala </i> but in reality is a long chain amino acid.
 	
@@ -110,7 +121,7 @@
             </div><hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
                <div class="form-check">
           <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" name="feature[]" id="feature" value="fasta">  PDB to FASTA<hr>
+              <input class="form-check-input" type="checkbox" name="feature_fasta" id="feature" value="fasta">  PDB to FASTA<hr>
               <div class=summary>
         <p align = "justify"> 
 	In this option you could acquire the information of the primary aminoacid sequence of your uploaded protein structure in Fasta format.
@@ -120,7 +131,7 @@
             </div><hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;">
                <div class="form-check">
           <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" name="feature[]" id="feature" value="active">  Active Sites<hr>
+              <input class="form-check-input" type="checkbox" name="feature_active" id="feature" value="active">  Active Sites<hr>
               <div class=summary>
         <p align = "justify"><b>Active site extraction from the protein complex. </b>
 	 <br>

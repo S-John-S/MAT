@@ -1,10 +1,9 @@
 <?php   
 error_reporting(E_ALL);
 $output = output_file;
-
-if ( !empty($_POST['feature'][3]) )
+if ( !empty($_POST['feature_missing']) )
 {
-	passthru("pdb_std -i $pdb_file -b > $output 2>&1");
+	passthru("./pdb_std -i inputfile.pdb -b > $output 2>&1");
 	$output_file = fopen(getcwd()."/".$output, "r");
 	$content = fread($output_file, filesize(getcwd()."/".$output));
 	$lines = explode("\n", $content);
@@ -14,7 +13,7 @@ if ( !empty($_POST['feature'][3]) )
         	}
  }
     else {
-	echo "N/A";
+	echo "Option 4 unselected or N/A";
 }
  ?> 
  
