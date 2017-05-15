@@ -2,6 +2,7 @@
 error_reporting(E_ALL);
 $output = output_file;
 
+$data = array();                // define array
 exec('ls -l', $data, $ret);     // execute command, output is array
 echo "<pre>";
 if ($ret == 0) {                // check status code. if successful
