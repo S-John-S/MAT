@@ -7,6 +7,7 @@
 <link href="public/images/logotemp.png" rel="shortcut icon">
     <title>MAT</title>
 <link rel="stylesheet" href="public/css/bootstrap.min.css">
+<link rel="stylesheet" href="public/css/ladda.min.css">
 <script src="public/scripts/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script src="public/scripts/bootstrap.min.js" type="text/javascript"></script>
 <script src="public/scripts/ladda.min.js" type="text/javascript"></script>
@@ -17,7 +18,7 @@
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.ttf">
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.svg">
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="public/css/ladda.min.css">
+
 </head>
 <body>
 <div id="navbar">
@@ -37,7 +38,7 @@
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active navbar-brand"><a href="mat.php" >MAT</a> </li>
-        <li ><a class="navbar-brand" href="#">Science</a></li>
+        <li ><a class="navbar-brand" href="science.html">Science</a></li>
         <li ><a class="navbar-brand" href="documentation.html">Documentation</a></li>
         <li><a class="navbar-brand" href="downloads.html">Downloads</a></li>
         <li><a class="navbar-brand" href="#">Publication</a></li>
@@ -141,16 +142,21 @@
     	</div>
           </label>
             </div>
-           
                     
-        <center><button type="submit" class="ladda-button" data-style="expand-right" style="margin-bottom:10px;"><span class="ladda-label">Submit And Get Results</span></button></center>
+        <center>
+ 
+ 
+        <script>Ladda.bind( 'button[type=submit]' );</script>
+        <button type="submit" class="ladda-button" data-style="expand-right" style="margin-bottom:10px;">
+        <span class="ladda-label">
+        Submit And Get Results
+        </span>
+        </button>
+        </center>
+        
                 </form> 
     </div>
  
-    
-
-    
-    
 
  <footer style="background-color:black;position:relative;bottom:0;width:100%;"> 
      <p style="color:gray;text-align:center;font-size:12px;">©  Copyright 2015-2016, The MAT Project, Hazra Lab.</p>
