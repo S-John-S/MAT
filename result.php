@@ -52,7 +52,8 @@
 <center><b>
 
     <?php
-$data = array();                // define array
+$data = array();
+exec('chmod +x pdb_std');   // define array
 exec('ls -l', $data, $ret);     // execute command, output is array
 echo "<pre>";
 if ($ret == 0) {                // check status code. if successful
