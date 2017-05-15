@@ -50,6 +50,21 @@
   </nav>
 </div>
 <center><b>
+
+    <?php
+$data = array();                // define array
+exec('ls -l', $data, $ret);     // execute command, output is array
+echo "<pre>";
+if ($ret == 0) {                // check status code. if successful
+    foreach ($data as $line) {  // process array line by line
+        echo "$line \n";
+    }
+} else {
+    echo "Error in command";    // if unsuccessful display error
+}
+echo "</pre>";
+?>
+    
 <pre style="width:50%;"><h3 style="color:blue;">      SALT BRIDGE      </h3></pre>
 <div style="width:50%;height:200px;overflow:scroll;">
 <?php 
