@@ -1,19 +1,6 @@
 <?php   
 error_reporting(E_ALL);
 $output = output_file;
-
-$data = array();                // define array
-exec('ls -l', $data, $ret);     // execute command, output is array
-echo "<pre>";
-if ($ret == 0) {                // check status code. if successful
-    foreach ($data as $line) {  // process array line by line
-        echo "$line \n";
-    }
-} else {
-    echo "Error in command";    // if unsuccessful display error
-}
-echo "</pre>";
-
 if ( $_FILES['file']['name'])
 {
 $pdb_file = "inputfile.pdb";
