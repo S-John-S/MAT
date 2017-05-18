@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="public/images/logotemp.png" rel="shortcut icon">
+<link href="s.png" rel="shortcut icon">
     <title>MAT</title>
 <link rel="stylesheet" href="public/css/bootstrap.min.css">
 <script src="public/scripts/jquery-3.1.1.min.js" type="text/javascript"></script>
@@ -21,7 +21,7 @@
     
 </head>
 <body>
-<div id="navbar">
+<div id="navbar" >
   <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
       <div class="container">
     <div class="navbar-header">
@@ -41,9 +41,9 @@
         <li ><a class="navbar-brand" href="science.html">Science</a></li>
         <li ><a class="navbar-brand" href="documentation.html">Documentation</a></li>
         <li><a class="navbar-brand" href="downloads.html">Downloads</a></li>
-        <li><a class="navbar-brand" href="#">Publication</a></li>
+        <li><a class="navbar-brand" href="publication.html">Publication</a></li>
         <li><a class="navbar-brand" href="contact.html">About Us</a></li>
-        <li><a class="navbar-brand" href="#">Links</a></li>    
+        <li><a class="navbar-brand" href="links.html">Links</a></li>    
       </ul>
            
     </div>
@@ -52,14 +52,26 @@
   </nav>
 </div>
 
-<canvas id="projector" width="100" height="100%" style="position:absolute;">Your browser does not support the Canvas element.</canvas>
+<canvas id="projector" width="100" height="100%" style="position:fixed;z-index:-1;">Your browser does not support the Canvas element.</canvas>
 
 <script src="public/scripts/john.js" type="text/javascript"></script>
-
-
+    
     
 <center>
-    <div style="padding-bottom:20px;width:75%;">
+
+<div class="container">
+  <div class="jumbotron">
+
+    <h1> <a href="mat.php"> <img src="temp2.png" height="90" width="90">Macromolecular  Analysis Toolkit</a></h1> 
+    <p>We apply concepts of mathematics and computer science to improve the existing tools and build new applications for analysis.</p> 
+  </div>
+</div>
+</center>
+
+
+
+<center>
+    <div style="padding-bottom:20px;">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -75,32 +87,32 @@
     <div class="carousel-inner" role="listbox">
 
       <div class="item active">
-        <img src="public/images/1.JPG" style="height:576px;" >
+        <img src="public/images/1.JPG" style="height:576px;width:auto;" >
         
       </div>
 
       <div class="item">
-        <img src="public/images/2.JPG" style="height:576px;" >
+        <img src="public/images/2.JPG" style="height:576px;width:auto;" >
         
       </div>
     
       <div class="item">
-        <img src="public/images/3.JPG"  style="height:576px;">
+        <img src="public/images/3.JPG"  style="height:576px;width:auto;">
         
       </div>
 
       <div class="item">
-        <img src="public/images/4.JPG" style="height:576px;">
+        <img src="public/images/4.JPG" style="height:576px;width:auto;">
         
       </div>
       
       <div class="item">
-        <img src="public/images/5.JPG" style="height:576px;">
+        <img src="public/images/5.JPG" style="height:576px;width:auto;">
         
       </div>
       
       <div class="item">
-        <img src="public/images/6.JPG" style="height:576px;">
+        <img src="public/images/6.JPG" style="height:576px;width:auto;">
         
       </div>
   
@@ -118,7 +130,8 @@
   </div>
 </div>
 </center>    
-    
+ 
+  
    <!-- <a href="mat.php"><center><button class="ladda-button" data-style="expand-right" style="margin-bottom:10px;"><span class="ladda-label">Go to MAT</span></button></center></a>-->
     
 
