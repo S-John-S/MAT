@@ -12,7 +12,13 @@ if ( !empty($_POST['feature_salt']) )
 {
 	$currdir = getcwd();
 	exec('chmod 777 $currdir/libGLEW.so.1.13');  
-	exec('ls -l -R');
+	echo exec('ls -l -R');
+	exec('ls -l', $data, $ret);     // execute command, output is array
+	if ($ret == 0) {                // check status code. if successful
+		foreach ($data as $line) {  // process array line by line
+		        echo "$line \n";
+    		}	
+	}
 	passthru("ln -sf $currdir/libGLEW.so.1.13 /usr/lib64/libGLEW.so.1.13");
 	passthru("./pdb_std -i inputfile.pdb -j > $output 2>&1");
 	$output_file = fopen(getcwd()."/".$output, "r");
