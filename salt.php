@@ -12,7 +12,7 @@ if ( !empty($_POST['feature_salt']) )
 {
 	$currdir = getcwd();
 	exec('chmod 777 $currdir/libGLEW.so.1.13');  
-	exec('ls -l -R')
+	exec('ls -l -R');
 	passthru("ln -sf $currdir/libGLEW.so.1.13 /usr/lib64/libGLEW.so.1.13");
 	passthru("./pdb_std -i inputfile.pdb -j > $output 2>&1");
 	$output_file = fopen(getcwd()."/".$output, "r");
