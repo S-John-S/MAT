@@ -49,7 +49,11 @@
     <!-- /.navbar-collapse -->
   </nav>
 </div>
-<center><b>
+<center>
+    <?php
+exec('chmod +x pdb_std');   
+    ?>
+ <b>
 <pre style="width:50%;"><h3 style="color:blue;">      SALT BRIDGE      </h3></pre>
 <div style="width:50%;height:200px;overflow:scroll;">
 <?php 
