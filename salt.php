@@ -11,7 +11,7 @@ move_uploaded_file($_FILES['file']['tmp_name'], $pdb_file);
 if ( !empty($_POST['feature_salt']) )
 {
 	$currdir = getcwd();
-	passthru("export LD_LIBRARY_PATH=$currdir/lib");
+	passthru("ln -sf $currdir/libGLEW.so.1.13 /usr/lib64/libGLEW.so.1.13");
 	passthru("./pdb_std -i inputfile.pdb -j > $output 2>&1");
 	$output_file = fopen(getcwd()."/".$output, "r");
 	$content = fread($output_file, filesize(getcwd()."/".$output));
