@@ -40,9 +40,9 @@
         <li ><a class="navbar-brand" href="science.html">Science</a></li>
         <li ><a class="navbar-brand" href="documentation.html">Documentation</a></li>
         <li><a class="navbar-brand" href="downloads.html">Downloads</a></li>
-        <li><a class="navbar-brand" href="#">Publication</a></li>
+        <li><a class="navbar-brand" href="publication.html">Publication</a></li>
         <li><a class="navbar-brand" href="contact.html">About Us</a></li>
-        <li><a class="navbar-brand" href="#">Links</a></li>    
+        <li><a class="navbar-brand" href="links.html">Links</a></li>    
       </ul>
     </div>
       </div>
@@ -50,22 +50,6 @@
   </nav>
 </div>
 <center><b>
-
-    <?php
-$data = array();
-exec('chmod +x pdb_std');   // define array
-exec('ls -l', $data, $ret);     // execute command, output is array
-echo "<pre>";
-if ($ret == 0) {                // check status code. if successful
-    foreach ($data as $line) {  // process array line by line
-        echo "$line \n";
-    }
-} else {
-    echo "Error in command";    // if unsuccessful display error
-}
-echo "</pre>";
-?>
-    
 <pre style="width:50%;"><h3 style="color:blue;">      SALT BRIDGE      </h3></pre>
 <div style="width:50%;height:200px;overflow:scroll;">
 <?php 

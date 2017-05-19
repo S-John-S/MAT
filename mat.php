@@ -41,9 +41,9 @@
         <li ><a class="navbar-brand" href="science.html">Science</a></li>
         <li ><a class="navbar-brand" href="documentation.html">Documentation</a></li>
         <li><a class="navbar-brand" href="downloads.html">Downloads</a></li>
-        <li><a class="navbar-brand" href="#">Publication</a></li>
+        <li><a class="navbar-brand" href="publication.html">Publication</a></li>
         <li><a class="navbar-brand" href="contact.html">About Us</a></li>
-        <li><a class="navbar-brand" href="#">Links</a></li>    
+        <li><a class="navbar-brand" href="links.html">Links</a></li>    
       </ul>
     </div>
       </div>
