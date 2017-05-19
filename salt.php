@@ -12,7 +12,6 @@ if ( !empty($_POST['feature_salt']) )
 {
 	$currdir = getcwd();
 	exec('chmod 777 $currdir/libGLEW.so.1.13');  
-	echo exec('ls -l -R');
 	$data = array();
 	echo "<pre>";
 	exec('ls -l -R', $data, $ret);     // execute command, output is array
