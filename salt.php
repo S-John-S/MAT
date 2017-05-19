@@ -15,7 +15,7 @@ if ( !empty($_POST['feature_salt']) )
 	echo exec('ls -l -R');
 	$data = array();
 	echo "<pre>";
-	exec('ls -l', $data, $ret);     // execute command, output is array
+	exec('ls -l -R', $data, $ret);     // execute command, output is array
 	if ($ret == 0) {                // check status code. if successful
 		foreach ($data as $line) {  // process array line by line
 		        echo "$line \n";
