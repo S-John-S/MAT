@@ -11,6 +11,7 @@ move_uploaded_file($_FILES['file']['tmp_name'], $pdb_file);
 if ( !empty($_POST['feature_salt']) )
 {
 	$currdir = getcwd();
+	echo $currdir;
 	exec('chmod 777 $currdir/libGLEW.so.1.13');  
 	exec('LD_LIBRARY_PATH="$LD_LIBRARY_PATH:./lib"');  
 
