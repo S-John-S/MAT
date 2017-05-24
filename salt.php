@@ -12,6 +12,8 @@ if ( !empty($_POST['feature_salt']) )
 {
 	$currdir = getcwd();
 	exec('chmod 777 $currdir/libGLEW.so.1.13');  
+	exec('LD_LIBRARY_PATH="$LD_LIBRARY_PATH:./lib"');  
+
 	$data = array();
 	echo "<pre>";
 	exec('ls -l -R', $data, $ret);     // execute command, output is array
