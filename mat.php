@@ -63,11 +63,11 @@
       </div>
       <div class="modal-body">
       
-        <div class="panel-group" id="accordion">
+        <div class="panel-group" id="accordio">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+        <a data-toggle="collapse" data-parent="#accordio" href="#collapse1">
         Access features</a>
       </h4>
     </div>
@@ -108,7 +108,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+        <a data-toggle="collapse" data-parent="#accordio" href="#collapse2">
         Access Protein Slicer</a>
       </h4>
     </div>
