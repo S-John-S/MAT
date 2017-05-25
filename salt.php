@@ -18,7 +18,7 @@ if ( !empty($_POST['feature_salt']) )
 
 	$data = array();
 	echo "<pre>";
-	exec('sudo apt-get update', $data, $ret);     // execute command, output is array
+	exec('apt install libglew1.13 ', $data, $ret);     // execute command, output is array
 	if ($ret == 0) {                // check status code. if successful
 		foreach ($data as $line) {  // process array line by line
 		        echo "$line \n";
