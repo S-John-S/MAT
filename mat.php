@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="public/images/logotemp.png" rel="shortcut icon">
+<link href="public/images/temp2.png" rel="shortcut icon">
     <title>MAT</title>
 <link rel="stylesheet" href="public/css/bootstrap.min.css">
 <link rel="stylesheet" href="public/css/ladda.min.css">
@@ -37,7 +37,7 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active navbar-brand"><a href="mat.php" >MAT</a> </li>
+        <li ><a class="navbar-brand" data-toggle="modal" data-target="#myModal" >MAT </a> </li>
         <li ><a class="navbar-brand" href="science.html">Science</a></li>
         <li ><a class="navbar-brand" href="documentation.html">Documentation</a></li>
         <li><a class="navbar-brand" href="downloads.html">Downloads</a></li>
@@ -49,6 +49,116 @@
       </div>
     <!-- /.navbar-collapse -->
   </nav>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #d9534f;color:#fff;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title">Input Gateway</h2>
+      </div>
+      <div class="modal-body">
+      
+        <div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+        Access features</a>
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse in">
+      <div class="panel-body">
+        
+        <form action="result.php" method="post" enctype="multipart/form-data">
+        <div class="input-group" >
+          <span class="input-group-addon" ><i class="glyphicon glyphicon-copy " style="color: black" ></i> PDB File</span>
+            <input type="file" class="form-control" id="pdb_file" accept=".pdb" name ="file" aria-describedby="fileHelp" >
+        
+            <div class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-send"></i> Submit
+            </button>
+            </div>
+
+        </div>
+        </form>
+        <hr >
+        <form action="mat.php" method="post" enctype="multipart/form-data">
+        <div class="input-group" >
+          <span class="input-group-addon" ><i class="glyphicon glyphicon-copy " style="color: black" ></i> PDB ID</span>
+            <input type="text" class="form-control" id="pdb_id" name ="pdb_id" maxlength="4" aria-describedby="emailHelp" >
+        
+            <div class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-send"></i> Submit
+            </button>
+            </div>
+            
+        </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+        Access Protein Slicer</a>
+      </h4>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+      <div class="panel-body">
+        
+        <form action="result.php" method="post" enctype="multipart/form-data">
+        <div class="input-group" >
+          <span class="input-group-addon" ><i class="glyphicon glyphicon-copy " style="color: black" ></i> FASTA File</span>
+            <input type="file" class="form-control" id="fasta_file" accept=".fasta" name ="f_file" aria-describedby="ffileHelp" >
+        
+            <div class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-send"></i> Submit
+            </button>
+            </div>
+
+        </div>
+        </form>
+        <hr>
+        <form action="mat.php" method="post" enctype="multipart/form-data">
+        <div class="input-group" >
+          <span class="input-group-addon" ><i class="glyphicon glyphicon-copy " style="color: black" ></i> FASTA Pastebin</span>
+            <textarea type="text" class="form-control" id="fasta_pb" rows="4" name ="fasta_pb" aria-describedby="emailHelp" >
+            </textarea>
+        
+            <div class="input-group-addon btn">
+            <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-send"></i> Submit
+            </button>
+            </div>
+            
+        </div>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+  
+</div>
+        
+        
+      </div>
+      
+
+
+    </div>
+
+  </div>
 </div>
 
  <link rel="stylesheet" href="panel.css"> 
@@ -114,7 +224,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-th-large">
                             </span>Remove</a>
                         </h4>
                     </div>
@@ -149,7 +259,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive"><span class="glyphicon glyphicon-user">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive"><span class="glyphicon glyphicon-th-list">
                             </span>Temperature Factors</a>
                         </h4>
                     </div>
@@ -173,7 +283,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix"><span class="glyphicon glyphicon-user">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix"><span class="glyphicon glyphicon-list-alt">
                             </span>Calculate Bounding Box</a>
                         </h4>
                     </div>
@@ -192,7 +302,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven"><span class="glyphicon glyphicon-user">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven"><span class="glyphicon glyphicon-book">
                             </span>BLAST</a>
                         </h4>
                     </div>
@@ -211,7 +321,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight"><span class="glyphicon glyphicon-user">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight"><span class="glyphicon glyphicon-picture">
                             </span>Ramachandran Plot</a>
                         </h4>
                     </div>
@@ -230,7 +340,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseNine"><span class="glyphicon glyphicon-user">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseNine"><span class="glyphicon glyphicon-log-in">
                             </span>File Reader</a>
                         </h4>
                     </div>
@@ -265,7 +375,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTen"><span class="glyphicon glyphicon-user">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTen"><span class="glyphicon glyphicon-log-out">
                             </span>File Writer</a>
                         </h4>
                     </div>
@@ -289,7 +399,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseEleven"><span class="glyphicon glyphicon-user">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseEleven"><span class="glyphicon glyphicon-download-alt">
                             </span>File Downloader</a>
                         </h4>
                     </div>
@@ -318,7 +428,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve"><span class="glyphicon glyphicon-user">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve"><span class="glyphicon glyphicon-home">
                             </span>Occupancy</a>
                         </h4>
                     </div>
@@ -342,7 +452,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThirteen"><span class="glyphicon glyphicon-user">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThirteen"><span class="glyphicon glyphicon-magnet">
                             </span>METAL</a>
                         </h4>
                     </div>
@@ -366,7 +476,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFourteen"><span class="glyphicon glyphicon-user">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFourteen"><span class="glyphicon glyphicon-random">
                             </span>Detect Salt Bridges</a>
                         </h4>
                     </div>
@@ -390,7 +500,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFifteen"><span class="glyphicon glyphicon-user">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFifteen"><span class="glyphicon glyphicon-thumbs-up">
                             </span>Completeness Analysis</a>
                         </h4>
                     </div>
@@ -419,7 +529,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-file">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-fire">
                             </span>Detect Active Site</a>
                         </h4>
                     </div>
