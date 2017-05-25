@@ -187,33 +187,56 @@ pre {
   <li><a data-toggle="tab" href="#menu5">Chymotrypsin</a></li>
 </ul>
 
+<?php
+$f_file = "ffile.fasta";
+if ( $_FILES['f_file']['name'])
+{
+move_uploaded_file($_FILES['f_file']['tmp_name'], $f_file);
+}
+?>
+
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
-    <h3>Result</h3>
-    <p>Some content.</p>
+    
     <?php 
+              $option = "ArgC";
               include ('slicer.php');
-	?>
+      ?>
   </div>
   <div id="menu1" class="tab-pane fade">
-    <h3>Result1</h3>
-    <p>Some content in this.</p>
+    
+    <?php 
+              $option = "AspN";
+              include ('slicer.php');
+      ?>
   </div>
   <div id="menu2" class="tab-pane fade">
-    <h3>Result2</h3>
-    <p>Some content in that.</p>
+    
+    <?php 
+              $option = "LysC";
+              include ('slicer.php');
+      ?>
   </div>
   <div id="menu3" class="tab-pane fade">
-    <h3>Result3</h3>
-    <p>Some content in that.</p>
+    
+    <?php 
+              $option = "LysN";
+              include ('slicer.php');
+      ?>
   </div>
   <div id="menu4" class="tab-pane fade">
-    <h3>Result4</h3>
-    <p>Some content in that.</p>
+    
+    <?php 
+              $option = "Trypsin";
+              include ('slicer.php');
+      ?>
   </div>
   <div id="menu5" class="tab-pane fade">
-    <h3>Result5</h3>
-    <p>Some content in that.</p>
+    
+    <?php 
+              $option = "Chymotrypsin";
+              include ('slicer.php');
+      ?>
   </div>
 </div>
 
