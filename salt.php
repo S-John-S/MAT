@@ -13,12 +13,12 @@ if ( !empty($_POST['feature_salt']) )
 	$currdir = getcwd();
 	echo $currdir;
 	exec('chmod 777 ./lib/libGLEW.so.1.13.0'); 
-	exec('apt-get update');
+	exec('ls -l -R');
 	exec('LD_LIBRARY_PATH=./lib/ && export LD_LIBRARY_PATH');  
 
 	$data = array();
 	echo "<pre>";
-	exec('ls -l -R', $data, $ret);     // execute command, output is array
+	exec('apt-get update', $data, $ret);     // execute command, output is array
 	if ($ret == 0) {                // check status code. if successful
 		foreach ($data as $line) {  // process array line by line
 		        echo "$line \n";
