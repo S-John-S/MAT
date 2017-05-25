@@ -83,7 +83,7 @@ pre {
     <div id="collapse1" class="panel-collapse collapse in">
       <div class="panel-body">
         
-        <form action="result.php" method="post" enctype="multipart/form-data">
+        <form action="mat.php" method="post" enctype="multipart/form-data">
         <div class="input-group" >
         <span class="input-group-addon" ><i class="glyphicon glyphicon-copy " style="color: black" ></i> PDB File</span>
         <input type="file" class="form-control" id="pdb_file" accept=".pdb" name ="file" aria-describedby="fileHelp" >
@@ -124,7 +124,7 @@ pre {
     <div id="collapse2" class="panel-collapse collapse">
       <div class="panel-body">
         
-        <form action="result.php" method="post" enctype="multipart/form-data">
+        <form action="pslicer.php" method="post" enctype="multipart/form-data">
         <div class="input-group" >
         <span class="input-group-addon" ><i class="glyphicon glyphicon-copy " style="color: black" ></i> FASTA File</span>
         <input type="file" class="form-control" id="fasta_file" accept=".fasta" name ="f_file" aria-describedby="ffileHelp" >
@@ -138,7 +138,7 @@ pre {
       </div>
       </form>
         <hr>
-        <form action="mat.php" method="post" enctype="multipart/form-data">
+        <form action="pslicer.php" method="post" enctype="multipart/form-data">
         <div class="input-group" >
         <span class="input-group-addon" ><i class="glyphicon glyphicon-copy " style="color: black" ></i> FASTA Pastebin</span>
         <textarea type="text" class="form-control" id="fasta_pb" rows="4" name ="fasta_pb" aria-describedby="emailHelp" >
