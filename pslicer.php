@@ -7,14 +7,26 @@
 <link href="public/images/temp2.png" rel="shortcut icon">
     <title>MAT</title>
 <link rel="stylesheet" href="public/css/bootstrap.min.css">
+<link rel="stylesheet" href="public/css/ladda.min.css">
 <script src="public/scripts/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script src="public/scripts/bootstrap.min.js" type="text/javascript"></script>
+<script src="public/scripts/ladda.min.js" type="text/javascript"></script>
+<script src="public/scripts/spin.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.eot">
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.woff">
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.woff2">
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.ttf">
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.svg">
 <link rel="stylesheet" href="styles.css">
+<style>
+pre {
+    display: block;
+    font-size:14px;
+    font-family: monospace;
+    white-space: pre;
+    margin: 1em 0;
+} 
+</style>
 </head>
 <body>
 <div id="navbar">
@@ -29,38 +41,26 @@
       </button>
       
         
-        <a class="navbar-brand" href="index.html">Home</a>
+        <a class="navbar-brand" href="index.html"><b>Home</b></a>
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li ><a class="navbar-brand" data-toggle="modal" data-target="#myModal" >MAT </a> </li>
         <li ><a class="navbar-brand" href="science.html">Science</a></li>
         <li ><a class="navbar-brand" href="documentation.html">Documentation</a></li>
-        <li ><a class="navbar-brand" href="downloads.html">Downloads</a></li>
-        <li ><a class="navbar-brand" href="publication.html">Publication</a></li>
+        <li><a class="navbar-brand" href="downloads.html">Downloads</a></li>
+        <li><a class="navbar-brand" href="publication.html">Publication</a></li>
         <li><a class="navbar-brand" href="contact.html">About Us</a></li>
-        <li class="active navbar-brand"><a  href="links.html">Links</a></li>
-            
+        <li><a class="navbar-brand" href="links.html">Links</a></li>    
       </ul>
     </div>
       </div>
     <!-- /.navbar-collapse -->
   </nav>
 </div>
- 
-<canvas id="projector" width="100" height="100%" style="position:fixed;">Your browser does not support the Canvas element.</canvas>
 
-<script src="public/scripts/john.js" type="text/javascript"></script>     
-  
 
- <center>
-<div class="container">
-  <div class="jumbotron">
-<img src="public/images/temp2.png" height="200" width="200">
- </div>
- </div>
-
- <!-- Modal -->
+<!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -168,8 +168,56 @@
     </div>
 
   </div>
-</div>   
- </center>   
+</div>
+
+
+<div class="container">
+<div class="well well-sm">
+	<h2>Protein Slicer</h2>
+</div>
+<hr>
+
+
+ <ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">ArgC</a></li>
+  <li><a data-toggle="tab" href="#menu1">AspN</a></li>
+  <li><a data-toggle="tab" href="#menu2">LysC</a></li>
+  <li><a data-toggle="tab" href="#menu3">LysN</a></li>
+  <li><a data-toggle="tab" href="#menu4">Trypsin</a></li>
+  <li><a data-toggle="tab" href="#menu5">Chymotrypsin</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    <h3>Result</h3>
+    <p>Some content.</p>
+    <?php 
+              include ('slicer.php');
+	?>
+  </div>
+  <div id="menu1" class="tab-pane fade">
+    <h3>Result1</h3>
+    <p>Some content in this.</p>
+  </div>
+  <div id="menu2" class="tab-pane fade">
+    <h3>Result2</h3>
+    <p>Some content in that.</p>
+  </div>
+  <div id="menu3" class="tab-pane fade">
+    <h3>Result3</h3>
+    <p>Some content in that.</p>
+  </div>
+  <div id="menu4" class="tab-pane fade">
+    <h3>Result4</h3>
+    <p>Some content in that.</p>
+  </div>
+  <div id="menu5" class="tab-pane fade">
+    <h3>Result5</h3>
+    <p>Some content in that.</p>
+  </div>
+</div>
+
+</div>
 
  <footer style="background-color:black;position:fixed;bottom:0;width:100%;"> 
      <p style="color:gray;text-align:center;font-size:12px;">©  Copyright 2015-2016, The MAT Project, Hazra Lab.</p>
@@ -177,3 +225,5 @@
 
 </body>
 </html>
+ 
+ 

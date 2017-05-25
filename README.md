@@ -1,6 +1,7 @@
 <h1>MAT</h1> 
     online at : http://mat-online.herokuapp.com
 A few changes caused an error so now the site has been rollbacked to last working form
+Including many features now.
 Professional site skeleton
 There are now 6 pages :-
 <h2>Home</h2>
