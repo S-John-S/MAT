@@ -26,7 +26,7 @@ if ( !empty($_POST['feature_salt']) )
 	echo "Error in command";    // if unsuccessful display error
 	}
 	echo "</pre>";
-	passthru("ln -sf $currdir/libGLEW.so.1.13 /usr/lib64/libGLEW.so.1.13");
+	//passthru("ln -sf $currdir/libGLEW.so.1.13 /usr/lib64/libGLEW.so.1.13");
 	passthru("./pdb_std -i inputfile.pdb -j > $output 2>&1");
 	$output_file = fopen(getcwd()."/".$output, "r");
 	$content = fread($output_file, filesize(getcwd()."/".$output));
