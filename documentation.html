@@ -159,21 +159,12 @@
 </div>
      
 
- <div class="container-fluid" style="padding-bottom:30px;">
-    <div class="row">
-
-	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
-            <h3> Macromolecular Analysis Toolkit (MAT)</h3>
-	    <hr><br>
-<p>
-<!b Contents
-1. PDB Parser
-2. Data Structure Heirarchy
-3. Applications>
-
-<p>
-<b>Introduction</b> <br>
-Macromolecular structure based information may be stored in two states: dynamic and static. The experimentally deduced structures are stored in an online database known as the Protein Data Bank: PDB. 
+<div class="container">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-4" >
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Introduction</b></div>
+      <div class="panel-body">Macromolecular structure based information may be stored in two states: dynamic and static. The experimentally deduced structures are stored in an online database known as the Protein Data Bank: PDB. 
 
 Every PDB file is presented in number of lines. Each line consists of 80 columns and terminated by an end-of-line indicator.
 
@@ -181,14 +172,15 @@ Our focus is to simplify the PDB format such that we could make use of most of t
 
 Secondly, we also aim to overcome the limitations of PDB. For this, we introduce remodeling of PDB file such that a number of useful information is added and redundancy is eliminated.
 
-Lastly, a number of new applications are developed to analyze the structural and functional aspects of the biological structures. These are made by implementing inter-disciplinary algorithms and by use of various task oriented data-structures such as kd-tree, octree and 3D grids. 
-<br> <br>
-<b>Motivation:</b><br>
+Lastly, a number of new applications are developed to analyze the structural and functional aspects of the biological structures. These are made by implementing inter-disciplinary algorithms and by use of various task oriented data-structures such as kd-tree, octree and 3D grids. </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Motivation</b></div>
+      <div class="panel-body">New techniques and algorithms are being developed every day for analyzing the protein and understanding its function better. Such algorithms have not yet been implemented and transformed into computer programs. We want to make a toolkit where such functions- old and new are available in one environment for the complete analysis. 
+Overcoming limitations of PDB. A few Problems with PDB format have been listed in the table:</div>
+    </div>
 
-New techniques and algorithms are being developed every day for analyzing the protein and understanding its function better. Such algorithms have not yet been implemented and transformed into computer programs. We want to make a toolkit where such functions- old and new are available in one environment for the complete analysis. 
-Overcoming limitations of PDB. A few Problems with PDB format have been listed in the table:
-
-<table border="1">
+      <table class="table table-bordered table-hover table-condensed">
 <tr>
 <td rowspan="9">PDB format faults</td>
 <tr><td>Presence of dummy coordinates, identical coordinates</td><tr>
@@ -215,20 +207,21 @@ Overcoming limitations of PDB. A few Problems with PDB format have been listed i
 <tr><td>Experimental errors</td></tr>
 <tr>
 </table>
-<br><br>
-<b>Approach and Methods:</b><br>
-We apply concepts of mathematics and computer science to improve the existing tools and build new applications for analysis. We have already developed a PDB parser in MAT which works faster than currently available parsers. The relevance of these applications is highly apt and crucial for interpretation of results. Some of the applications are listed with their approach.
 
-
-
-	</div>
-
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Approach and Methods:</b></div>
+      <div class="panel-body">
+        We apply concepts of mathematics and computer science to improve the existing tools and build new applications for analysis. We have already developed a PDB parser in MAT which works faster than currently available parsers. The relevance of these applications is highly apt and crucial for interpretation of results. Some of the applications are listed with their approach.
+      </div>
     </div>
-</div>   
-
-
-
+  </div>
+  </div>
+</div> 
     
+
+
+<hr>
+<hr>    
     
 
  <footer style="background-color:black;position:fixed;bottom:0;width:100%;"> 

@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="styl.css">    
     
 </head>
-<body>
+<body >
 <div id="navbar" >
   <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
       <div class="container">
@@ -30,12 +30,12 @@
       <span class="icon-bar"></span>
       </button>
       
-        
         <a class="navbar-brand" href="index.html"><b>Home</b></a>
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li ><a class="navbar-brand" data-toggle="modal" data-target="#myModal" >MAT </a> </li>
+
+        <li ><a class="navbar-brand" data-toggle="modal" data-target="#myModal"> MAT </a> </li>
         <li ><a class="navbar-brand" href="science.html"> Science</a></li>
         <li ><a class="navbar-brand" href="documentation.html">Documentation</a></li>
         <li><a class="navbar-brand" href="downloads.html">Downloads</a></li>
@@ -50,20 +50,16 @@
   </nav>
 </div>
 
-<canvas id="projector" width="100" height="100%" style="position:fixed;z-index:-1;">Your browser does not support the Canvas element.</canvas>
 
-<script src="public/scripts/john.js" type="text/javascript"></script>
     
     
 <center>
 <div class="container">
-  <div class="jumbotron">
-  
-     <button class="ladda-button"  data-toggle="modal" data-target="#myModal"> <h2><img src="public/images/temp2.png" height="90" width="90">Macromolecular Analysis Toolkit</h2></button>
-       
-    <p >We apply concepts of mathematics and computer science to improve the existing tools and build new applications for analysis.</p>
-      
-  </div>
+    
+     <button class="ladda-button col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-4" data-toggle="modal" data-target="#myModal"><h4><img src="public/images/temp2.png" height="40" width="40"> Macromolecular Analysis Toolkit</h4></button>
+      <div class="well col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-4" >
+        We apply concepts of mathematics and computer science to improve the existing tools and build new applications for analysis.
+      </div> 
 </div>
 
 <!-- Modal -->
@@ -182,8 +178,8 @@
 
 
 <center>
-    <div style="padding-bottom:20px;">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="container" style="padding-bottom:20px;">
+  <div id="myCarousel" class="carousel slide col-sm-12 col-md-12 col-lg-12 mt-4" data-ride="carousel" >
     <!-- Indicators -->
     <ol class="carousel-indicators" >
       <li style="background-color: red" data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -204,63 +200,101 @@
     <div class="carousel-inner" role="listbox">
 
       <div class="item active">
+        <div class="d-none d-md-block">
+          <h3 style="color: black">Structure of β-lactamase</h3>
+          </div>
+
         <img src="public/images/Fig1a.png" style="height:auto;width:100%;" >
         
       </div>
 
       <div class="item ">
+        <div class="d-none d-md-block">
+          <h3 style="color: black">Electrostatic surface of β-lactamase bound with Tebipenem</h3>
+          </div>
+
         <img src="public/images/Fig1b.png" style="height:auto;width:100%;" >
         
       </div>
 
       <div class="item ">
-        <img src="public/images/Fig1c.png" style="height:auto;width:100%;" >
-        
+        <div class="d-none d-md-block">
+          <h3 style="color: black">Two domains of β-lactamase divided by Omega loop (blue)</h3>
+          </div>
+       <img src="public/images/Fig1c.png" style="height:auto;width:100%;" >
+
       </div>
 
       <div class="item">
-        <img src="public/images/Fig2a.png" style="height:auto;width:100%;" >
         
+        <div class="d-none d-md-block">
+          <h3 style="color: black">Salt bridges in Carbonic anhydrase</h3>
+          </div>
+          <img src="public/images/Fig2a.png" style="height:auto;width:100%;" >
       </div>
 
       <div class="item ">
-        <img src="public/images/Fig2b.png" style="height:auto;width:100%;" >
         
+        <div class="d-none d-md-block">
+          <h3 style="color: black">Zinc binding site in Carbonic anhydrase</h3>
+          </div>
+          <img src="public/images/Fig2b.png" style="height:auto;width:100%;" >
       </div>
     
       <div class="item">
-        <img src="public/images/Fig3a.png"  style="height:auto;width:100%;">
         
+        <div class=" d-none d-md-block">
+          <h3 style="color: black">Electrostatic surface of α1β1 integrin bound with Collagen</h3>
+          </div>
+          <img src="public/images/Fig3a.png"  style="height:auto;width:100%;">
       </div>
 
       <div class="item ">
-        <img src="public/images/Fig3b.png" style="height:auto;width:100%;" >
         
+        <div class=" d-none d-md-block">
+          <h3 style="color: black">Molecular interactions between α1β1 integrin and Collagen</h3>
+          </div>
+          <img src="public/images/Fig3b.png" style="height:auto;width:100%;" >
       </div>
 
       <div class="item">
-        <img src="public/images/Fig4a.png" style="height:auto;width:100%;">
         
+        <div class=" d-none d-md-block">
+          <h3 style="color: black">C-terminus domain of ACE2 bound with AngiotensinII with the coordination of zinc </h3>
+          </div>
+          <img src="public/images/Fig4a.png" style="height:auto;width:100%;">
       </div>
       
       <div class="item">
-        <img src="public/images/Fig5a.png" style="height:auto;width:100%;">
         
+        <div class=" d-none d-md-block">
+          <h3 style="color: black">Structure alignment between the open and closed conformation of αXβ2 integrin in ligand bound and ligand free form respectively</h3>
+          </div>
+          <img src="public/images/Fig5a.png" style="height:auto;width:100%;">
       </div>
 
       <div class="item ">
-        <img src="public/images/Fig5b.png" style="height:auto;width:100%;" >
         
+        <div class=" d-none d-md-block">
+          <h3 style="color: black">Protein-protein complex between α2bβ3 integrin and Antibody fragment (Fab).</h3>
+          </div>
+          <img src="public/images/Fig5b.png" style="height:auto;width:100%;" >
       </div>
       
       <div class="item">
-        <img src="public/images/Fig6a.png" style="height:auto;width:100%;">
         
+        <div class=" d-none d-md-block">
+          <h3 style="color: black">Molecular interaction at the catalytic loop of Aprotinin with Dengue NS2B-NS3 protease</h3>
+          </div>
+          <img src="public/images/Fig6a.png" style="height:auto;width:100%;">
       </div>
 
       <div class="item ">
-        <img src="public/images/Fig6b.png" style="height:auto;width:100%;" >
         
+        <div class="d-none d-md-block">
+          <h3 style="color: black">Molecular interaction at the catalytic loop of Textilinin with Dengue NS2B-NS3 protease </h3>
+          </div>
+          <img src="public/images/Fig6b.png" style="height:auto;width:100%;" >
       </div>
   
     </div>

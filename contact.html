@@ -14,7 +14,8 @@
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.woff2">
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.ttf">
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.svg">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="public/css/ladda.min.css">
+<link rel="stylesheet" href="inset.css">
 <link rel="stylesheet" href="cards.css">
 
 </head>
@@ -49,17 +50,14 @@
   </nav>
 </div>
 
-<canvas id="projector" width="100" height="100%" style="position:fixed;">Your browser does not support the Canvas element.</canvas>
 
-<script src="public/scripts/john.js" type="text/javascript"></script> 
      
 <center>
 <div class="container">
-  <div class="well well-sm" > 
-    <h2>Macromolecular Analysis Toolkit</h2> 
-  </div>
-  <div class="well well-sm"><h3>We are here to receive any question, comment and suggestion. Feel free to drop an email at  mat.project2015@gmail.com</h3></div>
-</div>
+  <button class="ladda-button col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-4" style="height: 70px" data-toggle="modal" data-target="#myModal"><h4><img src="public/images/temp2.png" height="40" width="40"> Macromolecular Analysis Toolkit</h4></button>
+      <div class="well col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-4" >
+        We are here to receive any question, comment and suggestion. Feel free to drop an email at  mat.project2015@gmail.com
+      </div> 
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -173,130 +171,123 @@
 
 </center>  
 
+
+
+
 <div class="container">
+        
         <div class="row">
-            <div class="well well-sm" ><h3>Principal Investigator</h3> </div>           
-            <div class="col-sm-4 col-md-3 col-lg-2 mt-4">
-
-                <div class="card">
-                    <img class="card-img-top" src="public/images/img2.png">
-                    <div class="card-block">
-                        <h4 class="card-title">Dr. Saugata Hazra</h4>
-                        <div class="meta">
-                            <a href="#">References</a>
-                        </div>
-                        <div class="card-text">
-                            Asst.Prof., IIT Roorkee
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            
-            </div>
-            <div class="row mb-5">
-            <hr>
-            	<div class="well well-sm"><h3>Collaborators</h3></div> 
-            <div class="col-sm-4 col-md-3 col-lg-2 mt-4">
-                <div class="card">
-                    <img class="card-img-top" src="public/images/img1.jpg">
-                    <div class="card-block">
-                        <h4 class="card-title">Dr. Anupam Chattopadhyay</h4>
-                        <div class="meta">
-                            <a href="#">References</a>
-                        </div>
-                        <div class="card-text">
-                            Asst.Prof, NTU , Singapore
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="col-sm-4 col-md-3 col-lg-2 mt-4">
-                <div class="card">
-                    <img class="card-img-top" src="public/images/img5.jpg">
-                    <div class="card-block">
-                        <h4 class="card-title">Dr. Pralay Mitra</h4>
-                        <div class="meta">
-                            <a href="#">References</a>
-                        </div>
-                        <div class="card-text">
-                            Asst.Prof., IIT Kharagpur
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="col-sm-4 col-md-3 col-lg-2 mt-4">
-                <div class="card">
-                    <img class="card-img-top" src="public/images/img7.jpg">
-                    <div class="card-block">
-                        <h4 class="card-title">Dr. Kaustav Majumder</h4>
-                        <div class="meta">
-                            <a href="#">References</a>
-                        </div>
-                        <div class="card-text">
-                            Asst.Prof, University of Nebraska-Lincoln
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            
-            </div>
-            <div class="row mb-5">
-            <hr>
-            <div class="well well-sm"><h3>Contributors</h3></div> 
-            	<div class="col-sm-4 col-md-3 col-lg-2 mt-4">
-                <div class="card">
-                    <img class="card-img-top" src="public/images/img3.jpg">
-                    <div class="card-block">
-                        <h4 class="card-title">Gazal Kalyan</h4>
-                        <div class="meta">
-                            <a href="#">References</a>
-                        </div>
-                        <div class="card-text">
-                            Ph.D., IIT Roorkee
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="col-sm-4 col-md-3 col-lg-2 mt-4">
-                <div class="card">
-                    <img class="card-img-top" src="public/images/img4.jpg">
-                    <div class="card-block">
-                        <h4 class="card-title">Vivek Jungahare</h4>
-                        <div class="meta">
-                            <a href="#">References</a>
-                        </div>
-                        <div class="card-text">
-                            Ph.D., IIT Roorkee
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="col-sm-4 col-md-3 col-lg-2 mt-4">
-                <div class="card">
-                    <img class="card-img-top" src="public/images/img6.jpg">
-                    <div class="card-block">
-                        <h4 class="card-title">S John S</h4>
-                        <div class="meta">
-                            <a href="#">References</a>
-                        </div>
-                        <div class="card-text">
-                            B.Tech CSE, IIT Roorkee
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>            
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 mt-4" >
+        <img class="inset" src="public/images/img2.png">
+                  
         </div>
-</div>
+        <div style="font-size: 14px">
+        <hi class="col-xs-12 col-sm-12 col-md-12 col-lg-4 mt-4">
+        <span1>
+          Principal Investigator<br /> 
+          Dr. Saugata Hazra<br />
+          Asst. Prof<br />
+          IIT Roorkee
+        </span1>
+        </hi>
+        </div>
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 mt-4" >
+        <img class="inset" src="public/images/img1.png">
+        </div>
+        <div style="font-size: 14px">
+        <hi class="col-xs-12 col-sm-12 col-md-12 col-lg-4 mt-4">
+        <span1>
+          Collaborator<br /> 
+          Dr. Anupam Chattopadhyay<br />
+          Asst. Prof<br />
+          NTU , Singapore
+        </span1>
+        </hi>
+        </div>
+        </div>
+        <div class="row">
+
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 mt-4" >
+        <img class="inset" src="public/images/img5.jpg">
+        </div>
+        <div style="font-size: 14px">
+        <hi class="col-xs-12 col-sm-12 col-md-12 col-lg-4 mt-4">
+        <span1>
+          Collaborator<br /> 
+          Dr. Pralay Mitra<br />
+          Asst. Prof<br />
+          IIT Kharagpur
+        </span1>
+        </hi>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 mt-4" >
+        <img class="inset" src="public/images/img7.png">
+        </div>
+        <div style="font-size: 14px">
+        <hi class="col-xs-12 col-sm-12 col-md-12 col-lg-4 mt-4">
+        <span1>
+          Collaborator<br /> 
+          Dr. Kaustav Majumder<br />
+          Asst. Prof<br />
+          University of Nebraska-Lin.
+        </span1>
+        </hi>
+        </div>
+        </div>
+        <div class="row">
+        
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 mt-4" >
+        <img class="inset" src="public/images/img3.jpg">
+        </div>
+        <div style="font-size: 14px">
+        <hi class="col-xs-12 col-sm-12 col-md-12 col-lg-4 mt-4">
+        <span1>
+          Contributor<br /> 
+          Gazal Kalyan<br />
+          Ph.D.<br />
+          IIT Roorkee
+        </span1>
+        </hi>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 mt-4" >
+        <img class="inset" src="public/images/img4.png">
+        </div>
+        <div style="font-size: 14px">
+        <hi class="col-xs-12 col-sm-12 col-md-12 col-lg-4 mt-4">
+        <span1>
+          Contributor<br /> 
+          Vivek Jungahare<br />
+          Ph.D.<br />
+          IIT Roorkee
+        </span1>
+        </hi>
+        </div>
+        </div>
+        <div class="row">
+
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 mt-4" >
+        <img class="inset" src="public/images/img6.png">
+        </div>
+        <div style="font-size: 14px">
+        <hi class="col-xs-12 col-sm-12 col-md-12 col-lg-4 mt-4">
+        <span1>
+          Contributor<br /> 
+          S John S<br />
+          B.Tech CSE<br />
+          IIT Roorkee
+        </span1>
+        </hi>
+        </div>
+        
+        </div>
+        </div>
+
+
   
 
  <hr><hr>
