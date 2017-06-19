@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,8 +132,8 @@
         <form action="pslicer.php" method="post" enctype="multipart/form-data">
         <div class="input-group" >
         <span class="input-group-addon" ><i class="glyphicon glyphicon-copy " style="color: black" ></i> FASTA Pastebin</span>
-        <textarea type="text" class="form-control" id="fasta_pb" rows="4" name ="fasta_pb" aria-describedby="emailHelp" >
-        </textarea>
+        <textarea type="text" class="form-control" id="fasta_pb" rows="4" name ="fasta_pb" aria-describedby="emailHelp" ></textarea>
+        
       
         <div class="input-group-addon btn">
         <button class="btn btn-default" type="submit">
@@ -170,11 +173,11 @@
 2. The Representative Structures at 90% Sequence Identity. <br>
 3. Stoichiometry in biological assembly: HETEROMER, HOMO-4-MER, HOMO-6-MER, HOMO-8-MER. <br>
 4. Structure type: Protein and Protein complexes with ligand, metal, DNA and RNA. </div>
-    <div class="panel-footer">
+  <div class="panel-footer">
 Test data-set is available to download from the link below:
-<a href="/data/TEST_SET_ALL.tar.gz">Data_Set_All</a>
+<a href="/public/data/TEST_SET_ALL.tar.gz">Data_Set_All</a>
 Contact us for a free copy of the software.
-    </div>
+    </div> 
     </div>
 
 </div>	
