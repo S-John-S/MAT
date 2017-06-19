@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +20,6 @@
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.woff2">
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.ttf">
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.svg">
-<link rel="stylesheet" href="styles.css">
 <style>
 pre {
     display: block;
@@ -45,7 +47,7 @@ pre {
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li ><a class="navbar-brand" data-toggle="modal" data-target="#myModal" >MAT </a> </li>
+        <li ><a class="navbar-brand" href="links.html" >MAT </a> </li>
         <li ><a class="navbar-brand" href="science.html">Science</a></li>
         <li ><a class="navbar-brand" href="documentation.html">Documentation</a></li>
         <li><a class="navbar-brand" href="downloads.html">Downloads</a></li>
@@ -60,120 +62,24 @@ pre {
 </div>
 
 
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header" style="background-color: #d9534f;color:#fff;">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title">Input Gateway</h2>
-      </div>
-      <div class="modal-body">
-      
-        <div class="panel-group" id="accordion">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-        Access features</a>
-      </h4>
-    </div>
-    <div id="collapse1" class="panel-collapse collapse in">
-      <div class="panel-body">
-        
-        <form action="mat.php" method="post" enctype="multipart/form-data">
-        <div class="input-group" >
-        <span class="input-group-addon" ><i class="glyphicon glyphicon-copy " style="color: black" ></i> PDB File</span>
-        <input type="file" class="form-control" id="pdb_file" accept=".pdb" name ="file" aria-describedby="fileHelp" >
-      
-        <div class="input-group-btn">
-        <button class="btn btn-default" type="submit">
-          <i class="glyphicon glyphicon-send"></i> Submit
-          </button>
-        </div>
-
-      </div>
-      </form>
-        <hr >
-        <form action="mat.php" method="post" enctype="multipart/form-data">
-        <div class="input-group" >
-        <span class="input-group-addon" ><i class="glyphicon glyphicon-copy " style="color: black" ></i> PDB ID</span>
-        <input type="text" class="form-control" id="pdb_id" name ="pdb_id" maxlength="4" aria-describedby="emailHelp" >
-      
-        <div class="input-group-btn">
-        <button class="btn btn-default" type="submit">
-          <i class="glyphicon glyphicon-send"></i> Submit
-          </button>
-        </div>
-        
-      </div>
-      </form>
-        
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-        Access Protein Slicer</a>
-      </h4>
-    </div>
-    <div id="collapse2" class="panel-collapse collapse">
-      <div class="panel-body">
-        
-        <form action="pslicer.php" method="post" enctype="multipart/form-data">
-        <div class="input-group" >
-        <span class="input-group-addon" ><i class="glyphicon glyphicon-copy " style="color: black" ></i> FASTA File</span>
-        <input type="file" class="form-control" id="fasta_file" accept=".fasta" name ="f_file" aria-describedby="ffileHelp" >
-      
-        <div class="input-group-btn">
-        <button class="btn btn-default" type="submit">
-          <i class="glyphicon glyphicon-send"></i> Submit
-          </button>
-        </div>
-
-      </div>
-      </form>
-        <hr>
-        <form action="pslicer.php" method="post" enctype="multipart/form-data">
-        <div class="input-group" >
-        <span class="input-group-addon" ><i class="glyphicon glyphicon-copy " style="color: black" ></i> FASTA Pastebin</span>
-        <textarea type="text" class="form-control" id="fasta_pb" rows="4" name ="fasta_pb" aria-describedby="emailHelp" >
-        </textarea>
-      
-        <div class="input-group-addon btn">
-        <button class="btn btn-default" type="submit">
-          <i class="glyphicon glyphicon-send"></i> Submit
-          </button>
-        </div>
-        
-      </div>
-      </form>
-
-
-      </div>
-    </div>
-  </div>
-  
-</div>
-        
-        
-      </div>
-      
-
-
-    </div>
-
-  </div>
-</div>
 
 
 <div class="container">
 <div class="well well-sm">
 	<h2>Protein Slicer</h2>
+	<?php 
+	 
+	$myfile = fopen("ffile.fasta", "w+") or die("Unable to open file!");
+	
+	fwrite($myfile, $_POST["fasta_pb"]);
+	
+	fclose($myfile);
+
+
+  $session = session_id();
+	echo $session;
+	 ?>
 </div>
 <hr>
 
@@ -189,9 +95,11 @@ pre {
 
 <?php
 $f_file = "ffile.fasta";
+mkdir('uploads/'.$session,0777);
+$dir_path='uploads/'.$session.'/'.$f_file;
 if ( $_FILES['f_file']['name'])
 {
-move_uploaded_file($_FILES['f_file']['tmp_name'], $f_file);
+move_uploaded_file($_FILES['f_file']['tmp_name'], $dir_path);
 }
 ?>
 
@@ -250,3 +158,7 @@ move_uploaded_file($_FILES['f_file']['tmp_name'], $f_file);
 </html>
  
  
+<?php
+session_unset(); 
+session_destroy(); 
+?>
