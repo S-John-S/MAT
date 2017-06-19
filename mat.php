@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,14 +10,11 @@ session_start();
 <link rel="stylesheet" href="public/css/ladda.min.css">
 <script src="public/scripts/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script src="public/scripts/bootstrap.min.js" type="text/javascript"></script>
-<script src="public/scripts/ladda.min.js" type="text/javascript"></script>
-<script src="public/scripts/spin.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.eot">
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.woff">
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.woff2">
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.ttf">
 <link rel="stylesheet" href="public/fonts/glyphicons-halflings-regular.svg">
-<link rel="stylesheet" href="styles.css">
 
 </head>
 <body>
@@ -40,7 +34,7 @@ session_start();
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li ><a class="navbar-brand" href="links.html" >MAT </a> </li>
+        <li ><a class="navbar-brand" href="input.php" >MAT </a> </li>
         <li ><a class="navbar-brand" href="science.html">Science</a></li>
         <li ><a class="navbar-brand" href="documentation.html">Documentation</a></li>
         <li><a class="navbar-brand" href="downloads.html">Downloads</a></li>
@@ -56,7 +50,7 @@ session_start();
 
 
 
- <link rel="stylesheet" href="panel.css"> 
+ <link rel="stylesheet" href="public/css/panel.css"> 
 
 <div class="container">
     <div class="row">
