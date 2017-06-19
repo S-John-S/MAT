@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,8 +132,8 @@
         <form action="pslicer.php" method="post" enctype="multipart/form-data">
         <div class="input-group" >
         <span class="input-group-addon" ><i class="glyphicon glyphicon-copy " style="color: black" ></i> FASTA Pastebin</span>
-        <textarea type="text" class="form-control" id="fasta_pb" rows="4" name ="fasta_pb" aria-describedby="emailHelp" >
-        </textarea>
+        <textarea type="text" class="form-control" id="fasta_pb" rows="4" name ="fasta_pb" aria-describedby="emailHelp" ></textarea>
+        
       
         <div class="input-group-addon btn">
         <button class="btn btn-default" type="submit">
@@ -159,74 +162,68 @@
 </div>
  
  
-<center><b>
-<pre style="width:50%;"><h3 style="color:blue;">      SALT BRIDGE      </h3>
+<div class="container">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-4" >
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Introduction</b></div>
+      <div class="panel-body">Macromolecular structure based information may be stored in two states: dynamic and static. The experimentally deduced structures are stored in an online database known as the Protein Data Bank: PDB. 
 
-<h3 >Find which Atoms form Salt Bridge
-This feature calculates the stabilizing 
-as well as destabilizing salt bridges.
-It is a part of ongoing project under MAT.
-We use a novel approach to quickly parse 
-.pdb files and load it in the data structure
-for fast calculations and analysis.</h3></pre>
-<br>
-<hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;"><br>
-<pre style="width:50%;"><h3 style="color:blue;">      PROTEIN SLICER      </h3></pre>
+Every PDB file is presented in number of lines. Each line consists of 80 columns and terminated by an end-of-line indicator.
 
-<br>
- 
-<hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;"><br>
-<pre style="width:50%;"><h3 style="color:blue;">      METAL INTERACTION      </h3>
+Our focus is to simplify the PDB format such that we could make use of most of the information present in the PDB files. From our experience we have realize that a lot of information depicted in the REMARK part of the PDB file is generally overlooked due to extremely textual nature and thus making it hard to be utilized computationally. However, some of the points could be very vital for research point of view of some users. So we have decided to highlight some of the very important aspects among those information and presented it nicely.
 
-<h3>Find which atoms are interacting with metals. 
-Metals are very important part of the protein
-structure & specially important for their role
-in biology for their function. Our initiation 
-here is to identify the interacting aminoacid 
-residues of the protein to understand the 
-molecular level interaction.</h3></pre>
-<br>
-<hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;"><br>
-<pre style="width:60%;"><h3 style="color:blue;">      MISSING RESIDUES      </h3>
+Secondly, we also aim to overcome the limitations of PDB. For this, we introduce remodeling of PDB file such that a number of useful information is added and redundancy is eliminated.
 
-<h3>Missing residues identification Arg, Lys,
-Glu, Asp, etc are relatively long chain aminoacid
-residues, so when they situate in surface they
-render extra flexibility. Because of this extra 
-flexibility many times it become difficult to model
-the entire side chain of those residues while solving
-the structure using method of X-ray crystallography.
-Crystallographers use to model Ala so that at least 
-the chiral position could be determined in the 
-structure that sometimes mislead people to relate that
-PDB structure with biology. Here our effort is to 
-display those residues which are modeled as Ala but
-in reality is a long chain amino acid.</h3></pre>
-<br>
-<hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;"><br>
-<pre style="width:50%;"><h3 style="color:blue;">      PDB TO FASTA      </h3>
+Lastly, a number of new applications are developed to analyze the structural and functional aspects of the biological structures. These are made by implementing inter-disciplinary algorithms and by use of various task oriented data-structures such as kd-tree, octree and 3D grids. </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Motivation</b></div>
+      <div class="panel-body">New techniques and algorithms are being developed every day for analyzing the protein and understanding its function better. Such algorithms have not yet been implemented and transformed into computer programs. We want to make a toolkit where such functions- old and new are available in one environment for the complete analysis. 
+Overcoming limitations of PDB. A few Problems with PDB format have been listed in the table:</div>
+    </div>
 
-<h3>In this option you could acquire the 
-information of the primary aminoacid 
-sequence of your uploaded protein structure
-in Fasta format.</h3></pre>
-<br>
-<hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;"><br>
-<pre style="width:60%;"><h3 style="color:blue;">      ACTIVE SITES      </h3>
+      <table class="table table-bordered table-hover table-condensed">
+<tr>
+<td rowspan="9">PDB format faults</td>
+<tr><td>Presence of dummy coordinates, identical coordinates</td><tr>
+<tr><td>Atomic occupancies larger than 1.00 or even negative</td></tr>
+<tr><td>Use of different ligand names for water molecule i.e. H2O, WAT, HOH, etc</td></tr>
+<tr><td>Presence of solvents which are there only because of experimental techniques</td></tr>
+<tr><td>Use of different ligand name for same small molecule</td></tr>
+<tr><td>Number of atoms that can be included in file is limited to 99999, 9999 for amino acids and 62 for chains</td></tr>
+<tr><td>Textual descriptions are not computationally accessible and cannot be easily utilized to automatically generate the complete assembly</td></tr>
 
-<h3>Active site extraction from the protein complex. 
-Information regarding active site is always critical
-for understanding function specially in case of 
-enzymes. In this multioptional approach we have tried
-to give you idea about any neighbourhoods in protein
-provided you know which ligand, metal or residues 
-you are looking for.</h3></pre>
-<br>
-<hr style="color:white;border-style:inset;border-width:2px;margin-top:0.5em;margin-bottom:0.5em;"><br>
- </b></center>     
+
+<tr>
+<td rowspan="6">Structural Faults</td>
+<tr><td>Atoms too close to each other resulting in close contacts</td><tr>
+<tr><td>Un-natural dihedral angles</td></tr>
+<tr><td>Connectivity between atoms is wrong</td></tr>
+<tr><td>Contradictory Uniprot and Structural sequence</td></tr>
+<tr>
+
+<tr>
+<td rowspan="5">Structural faults that can not be corrected</td>
+<tr><td>Missing coordinates</td><tr>
+<tr><td>Electron density does not match with the coordinate</td></tr>
+<tr><td>Experimental errors</td></tr>
+<tr>
+</table>
+
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Approach and Methods:</b></div>
+      <div class="panel-body">
+        We apply concepts of mathematics and computer science to improve the existing tools and build new applications for analysis. We have already developed a PDB parser in MAT which works faster than currently available parsers. The relevance of these applications is highly apt and crucial for interpretation of results. Some of the applications are listed with their approach.
+      </div>
+    </div>
+  </div>
+  </div>
+</div>     
   
 
- 
+ <hr>
+<hr> 
 
 
     
