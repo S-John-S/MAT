@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,8 +132,8 @@
         <form action="pslicer.php" method="post" enctype="multipart/form-data">
         <div class="input-group" >
         <span class="input-group-addon" ><i class="glyphicon glyphicon-copy " style="color: black" ></i> FASTA Pastebin</span>
-        <textarea type="text" class="form-control" id="fasta_pb" rows="4" name ="fasta_pb" aria-describedby="emailHelp" >
-        </textarea>
+        <textarea type="text" class="form-control" id="fasta_pb" rows="4" name ="fasta_pb" aria-describedby="emailHelp" ></textarea>
+        
       
         <div class="input-group-addon btn">
         <button class="btn btn-default" type="submit">
@@ -163,55 +166,240 @@
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-4" >
   <div class="panel-group">
     <div class="panel panel-default">
-      <div class="panel-heading"><b>Introduction</b></div>
-      <div class="panel-body">Macromolecular structure based information may be stored in two states: dynamic and static. The experimentally deduced structures are stored in an online database known as the Protein Data Bank: PDB. 
-
-Every PDB file is presented in number of lines. Each line consists of 80 columns and terminated by an end-of-line indicator.
-
-Our focus is to simplify the PDB format such that we could make use of most of the information present in the PDB files. From our experience we have realize that a lot of information depicted in the REMARK part of the PDB file is generally overlooked due to extremely textual nature and thus making it hard to be utilized computationally. However, some of the points could be very vital for research point of view of some users. So we have decided to highlight some of the very important aspects among those information and presented it nicely.
-
-Secondly, we also aim to overcome the limitations of PDB. For this, we introduce remodeling of PDB file such that a number of useful information is added and redundancy is eliminated.
-
-Lastly, a number of new applications are developed to analyze the structural and functional aspects of the biological structures. These are made by implementing inter-disciplinary algorithms and by use of various task oriented data-structures such as kd-tree, octree and 3D grids. </div>
+      <div class="panel-heading"><b>Display Sequence:</b></div>
+      <div class="panel-body">Display sequence helps to understand the primary sequence of a protein i.e. which amino acid is present at which position. Amino acid sequence of a protein can be displayed in two formats. These format are: One letter code amino acid (such as: G=Glycine, P=Proline) and three letter code amino acids (Lys=Lysine, Glu=Glutamate) (Table 1). These two types of format are used in several places to represent the primary sequence of a protein. In a protein PDB file each amino acid are represented by three letter code. In Pymol viewer the amino acids are shown in one letter code by default but user can also highlight a residue there in three letter code. In most of the protein sequence and sequence alignment web server, protein sequences are represented usually by one letter code (Figure 1).</div>
+      <div class="panel-footer"><b>Table 1.</b> One letter and three letter codes for 20 different amino acids.</div>
     </div>
+    <div  class="table-responsive">          
+  <table class="table table-bordered table-hover table-condensed">
+    <thead>
+      <tr>
+        <th>Amino acids</th>
+        <th>One letter code</th>
+        <th>Three letter code</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Glycine</td>
+        <td>G</td>
+        <td>Gly</td>
+      </tr>
+      <tr><td>Alanine
+</td><td>A
+</td><td>Ala
+</td></tr><tr><td>Valine
+</td><td>V
+</td><td>Val
+</td></tr><tr><td>Leucine
+</td><td>L
+</td><td>Leu
+</td></tr><tr><td>Isoleucine
+</td><td>I
+</td><td>Ile
+</td></tr><tr><td>Proline
+</td><td>P
+</td><td>Pro
+</td></tr><tr><td>Methionine
+</td><td>M
+</td><td>Met
+</td></tr><tr><td>Cysteine
+</td><td>C
+</td><td>Cys
+</td></tr><tr><td>Serine
+</td><td>S
+</td><td>Ser
+</td></tr><tr><td>Threonine
+</td><td>T
+</td><td>Thr
+</td></tr><tr><td>Histidine
+</td><td>H
+</td><td>His
+</td></tr><tr><td>Tyrosine
+</td><td>Y
+</td><td>Tyr
+</td></tr><tr><td>Tryptophan
+</td><td>W
+</td><td>Trp
+</td></tr><tr><td>Phenylalanine
+</td><td>F
+</td><td>Phe
+</td></tr><tr><td>Lysine
+</td><td>K
+</td><td>Lys
+</td></tr><tr><td>Arginine
+</td><td>R
+</td><td>Arg
+</td></tr><tr><td>Glutamate
+</td><td>E
+</td><td>Glu
+</td></tr><tr><td>Glutamine
+</td><td>Q
+</td><td>Gln
+</td></tr><tr><td>Aspartate
+</td><td>D
+</td><td>Asp
+</td></tr><tr><td>Asparagine
+</td><td>N
+</td><td>Asn
+</td></tr>
+    </tbody>
+    
+  </table>
+
+<div class="thumbnail">
+<img class="img-responsive" src="public/images/fig1.jpg">
+<div class="caption"> <b>Figure 1.</b> Display of amino acid sequence of a protein in several aspects. Protein primary sequence retrieved from web server (A), Three letter code amino acids in PDB format of a protein (B), One letter code amino acid sequence in Pymol viewer (C), Three letter code amino acid sequence in Pymol viewer (D), One letter code amino acids in a sequence alignment file (E). </div>
+</div>
+
+  </div>
+
     <div class="panel panel-default">
-      <div class="panel-heading"><b>Motivation</b></div>
-      <div class="panel-body">New techniques and algorithms are being developed every day for analyzing the protein and understanding its function better. Such algorithms have not yet been implemented and transformed into computer programs. We want to make a toolkit where such functions- old and new are available in one environment for the complete analysis. 
-Overcoming limitations of PDB. A few Problems with PDB format have been listed in the table:</div>
+      <div class="panel-heading"><b>Calculation of Biochemical properties:</b></div>
+      <div class="panel-body">This method uses both the sequence and structural information of a protein to determine the molecular weight, pKA value and the number of amino acids with different chemical properties. During the analysis of pKA value of a particular residue in a protein, the pI and residual charge at a given pH are also been determined. Isoelectric point calculator implemented in this method provides detailed analysis of isoelectric point according different scales for individual proteins with the average value considering the statistical standard deviation.</div>
+      <div class="panel-footer"><b>Table 2.</b> Number and percentage of different amino acid contents in a protein.</div>
     </div>
 
-      <table class="table table-bordered table-hover table-condensed">
-<tr>
-<td rowspan="9">PDB format faults</td>
-<tr><td>Presence of dummy coordinates, identical coordinates</td><tr>
-<tr><td>Atomic occupancies larger than 1.00 or even negative</td></tr>
-<tr><td>Use of different ligand names for water molecule i.e. H2O, WAT, HOH, etc</td></tr>
-<tr><td>Presence of solvents which are there only because of experimental techniques</td></tr>
-<tr><td>Use of different ligand name for same small molecule</td></tr>
-<tr><td>Number of atoms that can be included in file is limited to 99999, 9999 for amino acids and 62 for chains</td></tr>
-<tr><td>Textual descriptions are not computationally accessible and cannot be easily utilized to automatically generate the complete assembly</td></tr>
+<div  class="table-responsive">          
+  <table class="table table-bordered table-hover table-condensed">
+    <thead>
+      <tr>
+        <th>Amino acids</th>
+        <th>Number</th>
+        <th>Percentage (%)</th>
+        <th>Amino acids</th>
+        <th>Number</th>
+        <th>Percentage (%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Ala
+</td><td>30
+</td><td>10.6
+</td><td>Leu
+</td><td>26
+</td><td>9.2
+</td></tr><tr><td>Arg
+</td><td>13
+</td><td>4.6
+</td><td>Lys
+</td><td>13
+</td><td>4.6
+</td></tr><tr><td>Asn
+</td><td>12
+</td><td>4.3
+</td><td>Met
+</td><td>10
+</td><td>3.5
+</td></tr><tr><td>Asp
+</td><td>11
+</td><td>3.9
+</td><td>Phe
+</td><td>9
+</td><td>3.2
+</td></tr><tr><td>Cys
+</td><td>3
+</td><td>1.1
+</td><td>Pro
+</td><td>12
+</td><td>4.3
+</td></tr><tr><td>Gln
+</td><td>9
+</td><td>3.2
+</td><td>Ser
+</td><td>20
+</td><td>7.1
+</td></tr><tr><td>Glu
+</td><td>24
+</td><td>8.5
+</td><td>Thr
+</td><td>10
+</td><td>3.5
+</td></tr><tr><td>Gly
+</td><td>21
+</td><td>7.4
+</td><td>Trp
+</td><td>1
+</td><td>0.4
+</td></tr><tr><td>His
+</td><td>11
+</td><td>3.9
+</td><td>Tyr
+</td><td>4
+</td><td>1.4
+</td></tr><tr><td>Ile
+</td><td>19
+</td><td>6.7
+</td><td>Val
+</td><td>24
+</td><td>8.5
+</td></tr>
+    </tbody>
+    
+  </table>
+  </div>
 
-
-<tr>
-<td rowspan="6">Structural Faults</td>
-<tr><td>Atoms too close to each other resulting in close contacts</td><tr>
-<tr><td>Un-natural dihedral angles</td></tr>
-<tr><td>Connectivity between atoms is wrong</td></tr>
-<tr><td>Contradictory Uniprot and Structural sequence</td></tr>
-<tr>
-
-<tr>
-<td rowspan="5">Structural faults that can not be corrected</td>
-<tr><td>Missing coordinates</td><tr>
-<tr><td>Electron density does not match with the coordinate</td></tr>
-<tr><td>Experimental errors</td></tr>
-<tr>
-</table>
-
-    <div class="panel panel-default">
-      <div class="panel-heading"><b>Approach and Methods:</b></div>
+      <div class="panel panel-default">
+      <div class="panel-heading"><b>Detection of active site:</b></div>
       <div class="panel-body">
-        We apply concepts of mathematics and computer science to improve the existing tools and build new applications for analysis. We have already developed a PDB parser in MAT which works faster than currently available parsers. The relevance of these applications is highly apt and crucial for interpretation of results. Some of the applications are listed with their approach.
+        Active site is defined by the specific region in a protein where the main catalytic reaction takes place between the protein and its substrate. Active site constructed with a definite organization of several residues and in some cases catalytic water molecules or metal ions with proper coordination. Computational methods are increasingly gaining importance as an aid in identifying active sites. This analysis required adequate and high resolution structural information of a protein. Modern active site prediction provides information based on structural and electrostatic conformity of each residue (Figure 2).
+      </div>
+    </div>
+
+<div class="thumbnail">
+<img class="img-responsive" src="public/images/fig2.jpg">
+<div class="caption"> <b>Figure 2.</b>  Active site of a protein bound to its substrate (above). Electrostatic representation of another protein’s active site where water (cyan colour sphere) plays a catalytic role (below). </div>
+</div>
+<div class="thumbnail">
+<img class="img-responsive" src="public/images/fig3.jpg">
+</div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Temperature Factors (B-factor):</b></div>
+      <div class="panel-body">
+        The polypeptide backbones and side chains of proteins are constantly moving due to thermal motion and the kinetic energy of the atoms. The B-factors also known as thermal factors of protein crystal structures reflect the fluctuation of atoms about their average positions and provide important information about protein dynamics. B-factor of an individual residue is depends upon the dihedral angles: phi (ϕ) and psi (ψ) of its C-Cα and Cα-N bond respectively. Cumulative contribution of residual B-factor regulates the overall protein stability (Figure 3).
+      </div>
+    </div>
+
+<div class="thumbnail">
+<img class="img-responsive" src="public/images/fig4.jpg">
+<div class="caption"> <b>Figure 3.</b> Different Thermal factor (B-factor) for different residues in protein highlighted in primary sequence and 3D structure by colour legend. </div>
+</div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Calculate bounding box: min and max coordinates:</b></div>
+      <div class="panel-body">
+        Coming Soon
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Blast:</b></div>
+      <div class="panel-body">
+        Coming Soon
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Ramachandran Plot:</b></div>
+      <div class="panel-body">
+        Coming Soon
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Occupancy:</b></div>
+      <div class="panel-body">
+        Coming Soon
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Non-standard naming convention:</b></div>
+      <div class="panel-body">
+        Coming Soon
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Metals:</b></div>
+      <div class="panel-body">
+        Coming Soon
       </div>
     </div>
   </div>
