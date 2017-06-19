@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,8 +143,8 @@
         <form action="pslicer.php" method="post" enctype="multipart/form-data">
         <div class="input-group" >
           <span class="input-group-addon" ><i class="glyphicon glyphicon-copy " style="color: black" ></i> FASTA Pastebin</span>
-            <textarea type="text" class="form-control" id="fasta_pb" rows="4" name ="fasta_pb" aria-describedby="emailHelp" >
-            </textarea>
+            <textarea type="text" class="form-control" id="fasta_pb" rows="4" name ="fasta_pb" aria-describedby="emailHelp" ></textarea>
+            
         
             <div class="input-group-addon btn">
             <button class="btn btn-default" type="submit">
@@ -177,28 +180,28 @@
 <div class="container">
         
         <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 mt-4" >
+        <div class="col-xs-7 col-sm-2 col-md-2 col-lg-2 mt-4 " >
         <img class="inset" src="public/images/img2.png">
                   
         </div>
         <div style="font-size: 14px">
-        <hi class="col-xs-12 col-sm-12 col-md-12 col-lg-4 mt-4">
+        <hi class="col-xs-5 col-sm-4 col-md-4 col-lg-4 mt-4">
         <span1>
-          Principal Investigator<br /> 
+          <b>Principal Investigator</b><br /> 
           Dr. Saugata Hazra<br />
           Asst. Prof<br />
           IIT Roorkee
         </span1>
         </hi>
         </div>
-        
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 mt-4" >
+
+        <div class="col-xs-7 col-sm-2 col-md-2 col-lg-2 mt-4 " >
         <img class="inset" src="public/images/img1.png">
         </div>
         <div style="font-size: 14px">
-        <hi class="col-xs-12 col-sm-12 col-md-12 col-lg-4 mt-4">
+        <hi class="col-xs-5  col-sm-4 col-md-4 col-lg-4 mt-4">
         <span1>
-          Collaborator<br /> 
+          <b>Collaborator</b><br /> 
           Dr. Anupam Chattopadhyay<br />
           Asst. Prof<br />
           NTU , Singapore
@@ -209,13 +212,13 @@
         <div class="row">
 
 
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 mt-4" >
+        <div class="col-xs-7 col-sm-2 col-md-2 col-lg-2 mt-4" >
         <img class="inset" src="public/images/img5.jpg">
         </div>
         <div style="font-size: 14px">
-        <hi class="col-xs-12 col-sm-12 col-md-12 col-lg-4 mt-4">
+        <hi class="col-xs-5 col-sm-4 col-md-4 col-lg-4 mt-4">
         <span1>
-          Collaborator<br /> 
+          <b>Collaborator</b><br /> 
           Dr. Pralay Mitra<br />
           Asst. Prof<br />
           IIT Kharagpur
@@ -223,13 +226,13 @@
         </hi>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 mt-4" >
+        <div class="col-xs-7 col-sm-2 col-md-2 col-lg-2 mt-4" >
         <img class="inset" src="public/images/img7.png">
         </div>
         <div style="font-size: 14px">
-        <hi class="col-xs-12 col-sm-12 col-md-12 col-lg-4 mt-4">
+        <hi class="col-xs-5 col-sm-4 col-md-4 col-lg-4 mt-4">
         <span1>
-          Collaborator<br /> 
+          <b>Collaborator</b><br /> 
           Dr. Kaustav Majumder<br />
           Asst. Prof<br />
           University of Nebraska-Lin.
@@ -240,26 +243,27 @@
         <div class="row">
         
         
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 mt-4" >
+        <div class="col-xs-7 col-sm-2 col-md-2 col-lg-2 mt-4" >
         <img class="inset" src="public/images/img3.jpg">
         </div>
         <div style="font-size: 14px">
-        <hi class="col-xs-12 col-sm-12 col-md-12 col-lg-4 mt-4">
+        <hi class="col-xs-5 col-sm-4 col-md-4 col-lg-4 mt-4">
         <span1>
-          Contributor<br /> 
+          <b>Contributor</b><br /> 
           Gazal Kalyan<br />
           Ph.D.<br />
           IIT Roorkee
         </span1>
         </hi>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 mt-4" >
+
+        <div class="col-xs-7 col-sm-2 col-md-2 col-lg-2 mt-4" >
         <img class="inset" src="public/images/img4.png">
         </div>
         <div style="font-size: 14px">
-        <hi class="col-xs-12 col-sm-12 col-md-12 col-lg-4 mt-4">
+        <hi class="col-xs-5 col-sm-4 col-md-4 col-lg-4 mt-4">
         <span1>
-          Contributor<br /> 
+          <b>Contributor</b><br /> 
           Vivek Jungahare<br />
           Ph.D.<br />
           IIT Roorkee
@@ -270,13 +274,13 @@
         <div class="row">
 
 
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 mt-4" >
+        <div class="col-xs-7 col-sm-2 col-md-2 col-lg-2 mt-4" >
         <img class="inset" src="public/images/img6.png">
         </div>
         <div style="font-size: 14px">
-        <hi class="col-xs-12 col-sm-12 col-md-12 col-lg-4 mt-4">
+        <hi class="col-xs-5 col-sm-4 col-md-4 col-lg-4 mt-4">
         <span1>
-          Contributor<br /> 
+          <b>Contributor</b><br /> 
           S John S<br />
           B.Tech CSE<br />
           IIT Roorkee
