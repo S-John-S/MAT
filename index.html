@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,13 +57,7 @@
     
     
 <center>
-<div class="container">
-    
-     <button class="ladda-button col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-4" style="height: 70px" data-toggle="modal" data-target="#myModal"><h4><img src="public/images/temp2.png" height="40" width="40"> Macromolecular Analysis Toolkit</h4></button>
-      <div class="well col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-4" >
-        We apply concepts of mathematics and computer science to improve the existing tools and build new applications for analysis.
-      </div> 
-</div>
+
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -143,8 +140,8 @@
         <form action="pslicer.php" method="post" enctype="multipart/form-data">
         <div class="input-group" >
   		  <span class="input-group-addon" ><i class="glyphicon glyphicon-copy " style="color: black" ></i> FASTA Pastebin</span>
-    		<textarea type="text" class="form-control" id="fasta_pb" rows="4" name ="fasta_pb" aria-describedby="emailHelp" >
-    		</textarea>
+    		<textarea type="text" class="form-control" id="fasta_pb" rows="4" name ="fasta_pb" aria-describedby="emailHelp" ></textarea>
+    		
   		
   			<div class="input-group-addon btn">
  	     	<button class="btn btn-default" type="submit">
@@ -178,8 +175,8 @@
 
 
 <center>
-    <div class="container" style="padding-bottom:20px;">
-  <div id="myCarousel" class="carousel slide col-sm-12 col-md-12 col-lg-12 mt-4" data-ride="carousel" >
+    <div class="container" style="padding-bottom:20px;"><div class="row">
+  <div id="myCarousel" class="carousel slide col-sm-12 col-md-8 col-lg-8 mt-4" data-ride="carousel" >
     <!-- Indicators -->
     <ol class="carousel-indicators" >
       <li style="background-color: red" data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -309,11 +306,19 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+
+<button class="ladda-button col-xs-12 col-sm-12 col-md-4 col-lg-4 mt-4" data-toggle="modal" data-target="#myModal"><h4><img src="public/images/temp2.png" height="40" width="40"> Macromolecular Analysis Toolkit</h4></button>
+<div class="well col-xs-12 col-sm-12 col-md-4 col-lg-4 mt-4" style="font-size: 17px " >
+        We apply concepts of mathematics and computer science to improve the existing tools and build new applications for analysis. We have already developed a PDB parser in MAT which works faster than currently available parsers. The relevance of these applications is highly apt and crucial for interpretation of results. Some of the applications are listed with their approach.Lastly, a number of new applications are developed to analyze the structural and functional aspects of the biological structures. These are made by implementing inter-disciplinary algorithms and by use of various task oriented data-structures such as kd-tree, octree and 3D grids.
+      </div>
 </div>
-</center>    
+
+</div>
+</center>
+
  
   
-   <!-- <a href="mat.php"><center><button class="ladda-button" data-style="expand-right" style="margin-bottom:10px;"><span class="ladda-label">Go to MAT</span></button></center></a>-->
+   
     
 
  <footer style="background-color:black;position:fixed;bottom:0;width:100%;"> 
