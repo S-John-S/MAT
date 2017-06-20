@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,6 +52,48 @@
 </div>
 
 
+<?php 
+
+$session = session_id();
+
+
+
+$file = "inputfile.pdb";
+
+mkdir('uploads/'.$session, 0777, true);
+
+$dir_path = 'uploads/'.$session.'/'.$file;
+
+if ( $_FILES['file']['name'])
+{
+move_uploaded_file($_FILES['file']['tmp_name'], $dir_path);
+}
+
+chmod('uploads/'.$session.'/', 0777);
+
+$cpath = 'uploads/'.$session.'/pdb_std';
+copy("pdb_std", $cpath);
+chmod($cpath, 0777);
+
+$outpath = 'uploads/'.$session ;
+
+chdir($outpath);
+
+passthru("./pdb_std -i inputfile.pdb -A -B -C -E -F");
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
 
  <link rel="stylesheet" href="public/css/panel.css"> 
 
@@ -84,6 +129,59 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFourteen"><span class="glyphicon glyphicon-random">
+                            </span>Detect Salt Bridges</a>
+                        </h4>
+                    </div>
+                    <div id="collapseFourteen" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <a onclick="loadSaltOne()">Stabilizing</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a onclick="loadSaltTwo()">De-Stabilizing</a> 
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-fire">
+                            </span>Detect Active Site</a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon "></span><a onclick="loadActOne()">Select Ligand</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon "></span><a onclick="loadActTwo()">Display Active Site Residue</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon "></span><a onclick="loadActThree()">Show Interaction</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
                             </span>Calculate Biochemical Prop.</a>
                         </h4>
@@ -110,35 +208,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-fire">
-                            </span>Detect Active Site</a>
-                        </h4>
-                    </div>
-                    <div id="collapseFour" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <table class="table">
-                                <tr>
-                                    <td>
-                                        <span class="glyphicon "></span><a href="#">Select Ligand</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="glyphicon "></span><a href="#">Display Active Site Residue</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="glyphicon "></span><a href="#">Show Interaction</a>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                
                 
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -384,7 +454,7 @@ function loadSeqOne() {
       this.responseText;
     }
   };
-  xhttp.open("GET", "uploads/display_seq_1", true);
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/display_seq_1", true);
   xhttp.send();
 }
 function loadSeqTwo() {
@@ -395,7 +465,62 @@ function loadSeqTwo() {
       this.responseText;
     }
   };
-  xhttp.open("GET", "uploads/display_seq_2", true);
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/display_seq_2", true);
+  xhttp.send();
+}
+function loadSaltOne() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("resulte").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/detect_saltbridge_1", true);
+  xhttp.send();
+}
+function loadSaltTwo() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("resulte").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/detect_saltbridge_2", true);
+  xhttp.send();
+}
+function loadActOne() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("resulte").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/Active_site1", true);
+  xhttp.send();
+}
+function loadActTwo() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("resulte").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/Active_site2", true);
+  xhttp.send();
+}
+function loadActThree() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("resulte").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/Active_site3", true);
   xhttp.send();
 }
 </script>
