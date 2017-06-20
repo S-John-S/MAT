@@ -75,6 +75,8 @@ $cpath = 'uploads/'.$session.'/pdb_std';
 copy("pdb_std", $cpath);
 chmod($cpath, 0777);
 
+
+
 $outpath = 'uploads/'.$session ;
 
 chdir($outpath);
@@ -113,12 +115,13 @@ passthru("./pdb_std -i inputfile.pdb -A -B -C -E -F");
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <span class="glyphicon "></span><a onclick="loadSeqOne()">ONE Letter Format</a>
+                                        <a onclick="loadSeqOne()">ONE Letter Format </a><a href="uploads/<?php echo $session; ?>/display_seq_1" download> <b>Download</b></a>
+
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span class="glyphicon "></span><a onclick="loadSeqTwo()">THREE Letter Format</a>
+                                        <a onclick="loadSeqTwo()">THREE Letter Format </a><a href="uploads/<?php echo $session; ?>/display_seq_2" download> <b>Download</b></a>
                                     </td>
                                 </tr>
                                 
@@ -138,12 +141,12 @@ passthru("./pdb_std -i inputfile.pdb -A -B -C -E -F");
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a onclick="loadSaltOne()">Stabilizing</a>
+                                        <a onclick="loadSaltOne()">Stabilizing</a><a href="uploads/<?php echo $session; ?>/detect_saltbridge_1" download> <b>Download</b></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a onclick="loadSaltTwo()">De-Stabilizing</a> 
+                                        <a onclick="loadSaltTwo()">De-Stabilizing</a> <a href="uploads/<?php echo $session; ?>/detect_saltbridge_2" download> <b>Download</b></a>
                                     </td>
                                 </tr>
                             </table>
@@ -162,17 +165,17 @@ passthru("./pdb_std -i inputfile.pdb -A -B -C -E -F");
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <span class="glyphicon "></span><a onclick="loadActOne()">Select Ligand</a>
+                                        <a onclick="loadActOne()">Select Ligand</a> <a href="uploads/<?php echo $session; ?>/Active_site1" download> <b>Download</b></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span class="glyphicon "></span><a onclick="loadActTwo()">Display Active Site Residue</a>
+                                        <a onclick="loadActTwo()">Display Active Site Residue</a> <a href="uploads/<?php echo $session; ?>/Active_site2" download> <b>Download</b></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span class="glyphicon "></span><a onclick="loadActThree()">Show Interaction</a>
+                                        <a onclick="loadActThree()">Show Interaction</a> <a href="uploads/<?php echo $session; ?>/Active_site3" download> <b>Download</b></a>
                                     </td>
                                 </tr>
                             </table>
