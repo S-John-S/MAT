@@ -454,7 +454,7 @@ function loadSeqOne() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("resulte").innerHTML =
-      this.responseText;
+      this.responseText.replace(/\n/g, '<br/>');
     }
   };
   xhttp.open("GET", "uploads/<?php echo $session; ?>/display_seq_1", true);
@@ -465,7 +465,7 @@ function loadSeqTwo() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("resulte").innerHTML =
-      this.responseText;
+      this.responseText.replace(/\n/g, '<br/>');
     }
   };
   xhttp.open("GET", "uploads/<?php echo $session; ?>/display_seq_2", true);
@@ -476,7 +476,7 @@ function loadSaltOne() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("resulte").innerHTML =
-      this.responseText;
+      this.responseText.replace(/\n/g, '<br/>');
     }
   };
   xhttp.open("GET", "uploads/<?php echo $session; ?>/detect_saltbridge_1", true);
@@ -487,7 +487,7 @@ function loadSaltTwo() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("resulte").innerHTML =
-      this.responseText;
+      this.responseText.replace(/\n/g, '<br/>');
     }
   };
   xhttp.open("GET", "uploads/<?php echo $session; ?>/detect_saltbridge_2", true);
@@ -498,7 +498,7 @@ function loadActOne() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("resulte").innerHTML =
-      this.responseText;
+      this.responseText.replace(/\n/g, '<br/>');
     }
   };
   xhttp.open("GET", "uploads/<?php echo $session; ?>/Active_site1", true);
@@ -509,7 +509,7 @@ function loadActTwo() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("resulte").innerHTML =
-      this.responseText;
+      this.responseText.replace(/\n/g, '<br/>');
     }
   };
   xhttp.open("GET", "uploads/<?php echo $session; ?>/Active_site2", true);
@@ -520,7 +520,7 @@ function loadActThree() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("resulte").innerHTML =
-      this.responseText;
+      this.responseText.replace(/\n/g, '<br/>');
     }
   };
   xhttp.open("GET", "uploads/<?php echo $session; ?>/Active_site3", true);
