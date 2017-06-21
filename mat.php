@@ -435,7 +435,7 @@ passthru("./pdb_std -i inputfile.pdb -A -B -C -E -F");
             </div>
         </div>
         <div class="col-sm-9 col-md-9">
-            <div class="well" id="resulte">
+            <div class="well" id="resulte" STYLE="font-family: monospace">
                 <h1>
                     Feature Name</h1>
                 Result Display with related file links and visuals
