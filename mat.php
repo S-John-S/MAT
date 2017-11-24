@@ -69,33 +69,141 @@ if ( $_FILES['file']['name'])
 move_uploaded_file($_FILES['file']['tmp_name'], $dir_path);
 }
 
+$my_file = 'inputfile.txt';
+$handle = fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);
+$data = $_FILES['file']['name'];
+fwrite($handle, $data);
+
+// We need to get the filename to open it in Pymol
+//$_FILES['file']['name'];
+
+
 chmod('uploads/'.$session.'/', 0777);
 
-$cpath = 'uploads/'.$session.'/pdb_std';
+//The set of these three lines copy required stuff and make them usable.
+$cpath = 'uploads/'.$session.'/pdb_std'; 
 copy("pdb_std", $cpath);
 chmod($cpath, 0777);
 
+$cpath = 'uploads/'.$session.'/as1_main.py'; 
+copy("as1_main.py", $cpath);
+chmod($cpath, 0777);
 
+$cpath = 'uploads/'.$session.'/as1_temp_script.py'; 
+copy("as1_temp_script.py", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/as2_main.py'; 
+copy("as2_main.py", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/as2_temp_script.py'; 
+copy("as2_temp_script.py", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/as3_main.py'; 
+copy("as3_main.py", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/as3_temp_script.py'; 
+copy("as3_temp_script.py", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/dsb_main.py'; 
+copy("dsb_main.py", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/dsb_temp_glmol.py'; 
+copy("dsb_temp_glmol.py", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/dsb_temp_script.py'; 
+copy("dsb_temp_script.py", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/hbb_main.py'; 
+copy("hbb_main.py", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/hbb_temp_script.py'; 
+copy("hbb_temp_script.py", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/export_to_gl.py'; 
+copy("export_to_gl.py", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/sb_main.py'; 
+copy("sb_main.py", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/sb_temp_glmol.py'; 
+copy("sb_temp_glmol.py", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/sb_temp_script.py'; 
+copy("sb_temp_script.py", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/tem_plot.py'; 
+copy("tem_plot.py", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/contour.R'; 
+copy("contour.R", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/sb_temp_script.py'; 
+copy("sb_temp_script.py", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/GLmol37.js'; 
+copy("GLmol37.js", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/jquery-1.7.min.js'; 
+copy("jquery-1.7.min.js", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/Three45.js'; 
+copy("Three45.js", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/imported.html'; 
+copy("imported.html", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/pymol_script_run.py'; 
+copy("pymol_script_run.py", $cpath);
+chmod($cpath, 0777);
+
+$cpath = 'uploads/'.$session.'/inputfile.txt'; 
+copy("inputfile.txt", $cpath);
+chmod($cpath, 0777);
 
 $outpath = 'uploads/'.$session ;
 
 chdir($outpath);
 
-passthru("./pdb_std -i inputfile.pdb -A -B -C -E -F");
+//if ($_FILES['file']['name']) {
+passthru("./pdb_std -i inputfile.pdb -A");
+passthru("./pdb_std -i inputfile.pdb -B");
+passthru("./pdb_std -i inputfile.pdb -C");
+passthru("./pdb_std -i inputfile.pdb -D");
+passthru("./pdb_std -i inputfile.pdb -E");
+passthru("./pdb_std -i inputfile.pdb -F");
+passthru("./pdb_std -i inputfile.pdb -G");
+passthru("./pdb_std -i inputfile.pdb -H");
+passthru("./pdb_std -i inputfile.pdb -I");
+
+//} else {
+//passthru("./pdb_std -p $_POST['pdb_id'] -A -B -C -D -E -F -G -H");
+//}
+passthru("python tem_plot.py");
+exec("Rscript contour.R");
+exec("python pymol_script_run.py");
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
 
  <link rel="stylesheet" href="public/css/panel.css"> 
 
@@ -115,13 +223,13 @@ passthru("./pdb_std -i inputfile.pdb -A -B -C -E -F");
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a onclick="loadSeqOne()">ONE Letter Format </a><a href="uploads/<?php echo $session; ?>/display_seq_1" download> <b>Download</b></a>
+                                        <a onclick="loadSeqOne()">ONE Letter Format </a><a href="uploads/<?php echo $session; ?>/display_seq_1" download> <button>Download</button></a>
 
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a onclick="loadSeqTwo()">THREE Letter Format </a><a href="uploads/<?php echo $session; ?>/display_seq_2" download> <b>Download</b></a>
+                                        <a onclick="loadSeqTwo()">THREE Letter Format </a><a href="uploads/<?php echo $session; ?>/display_seq_2" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                                 
@@ -141,12 +249,12 @@ passthru("./pdb_std -i inputfile.pdb -A -B -C -E -F");
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a onclick="loadSaltOne()">Stabilizing</a><a href="uploads/<?php echo $session; ?>/detect_saltbridge_1" download> <b>Download</b></a>
+                                        <a onclick="loadSaltOne()">Stabilizing</a><a href="uploads/<?php echo $session; ?>/detect_saltbridge_1" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a onclick="loadSaltTwo()">De-Stabilizing</a> <a href="uploads/<?php echo $session; ?>/detect_saltbridge_2" download> <b>Download</b></a>
+                                        <a onclick="loadSaltTwo()">De-Stabilizing</a> <a href="uploads/<?php echo $session; ?>/detect_saltbridge_2" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                             </table>
@@ -165,17 +273,17 @@ passthru("./pdb_std -i inputfile.pdb -A -B -C -E -F");
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a onclick="loadActOne()">Select Ligand</a> <a href="uploads/<?php echo $session; ?>/Active_site1" download> <b>Download</b></a>
+                                        <a onclick="loadActOne()">Select Ligand</a> <a href="uploads/<?php echo $session; ?>/Active_site1" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a onclick="loadActTwo()">Display Active Site Residue</a> <a href="uploads/<?php echo $session; ?>/Active_site2" download> <b>Download</b></a>
+                                        <a onclick="loadActTwo()">Display Active Site Residue</a> <a href="uploads/<?php echo $session; ?>/Active_site2" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a onclick="loadActThree()">Show Interaction</a> <a href="uploads/<?php echo $session; ?>/Active_site3" download> <b>Download</b></a>
+                                        <a onclick="loadActThree()">Show Interaction</a> <a href="uploads/<?php echo $session; ?>/Active_site3" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                             </table>
@@ -194,17 +302,17 @@ passthru("./pdb_std -i inputfile.pdb -A -B -C -E -F");
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a href="#">Molecular Weight</a>
+                                        <a onclick="loadBioOne()">Molecular Weight</a><a href="uploads/<?php echo $session; ?>/biochem_prop_1" download> <button>Download</button></a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <!--  <tr>
                                     <td>
                                         <a href="#">pKa</a>
                                     </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <td>
-                                        <a href="#">Total Number of Amino Acids</a>
+                                        <a onclick="loadBioTwo()">Total Number of Amino Acids</a><a href="uploads/<?php echo $session; ?>/biochem_prop_2" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                             </table>
@@ -225,12 +333,12 @@ passthru("./pdb_std -i inputfile.pdb -A -B -C -E -F");
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a href="#">Display</a>
+                                        <a onclick="loadTemOne()">Display</a><a href="uploads/<?php echo $session; ?>/Temp_plot2" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="#">Average </a> 
+<a onclick="loadTemTwo()">Plot </a> <a href="uploads/<?php echo $session; ?>/Temp_plot2.png" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                             </table>
@@ -249,23 +357,23 @@ passthru("./pdb_std -i inputfile.pdb -A -B -C -E -F");
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a href="#">HETATOM</a>
+                                        <a onclick="loadRemOne()">HETATOM</a><a href="uploads/<?php echo $session; ?>/remove_1" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="#">ANISOU </a> 
+                                        <a onclick="loadRemTwo()">ANISOU </a> <a href="uploads/<?php echo $session; ?>/remove_2" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="#">Header</a>
+                                        <a onclick="loadRemThree()">Header</a><a href="uploads/<?php echo $session; ?>/remove_3" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="#">
-                                            Solvent</a>
+                                        <a onclick="loadRemFour()">
+                                            Solvent</a><a href="uploads/<?php echo $session; ?>/remove_4" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                             </table>
@@ -291,25 +399,7 @@ passthru("./pdb_std -i inputfile.pdb -A -B -C -E -F");
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven"><span class="glyphicon glyphicon-book">
-                            </span>BLAST</a>
-                        </h4>
-                    </div>
-                    <div id="collapseSeven" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <table class="table">
-                                <tr>
-                                    <td>
-                                        <a href="#">Blast ???</a>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -322,7 +412,12 @@ passthru("./pdb_std -i inputfile.pdb -A -B -C -E -F");
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a href="#">All Amino Acids</a>
+                                        <a onclick="loadRamOne()">Phi/Psi Data </a> <a href="uploads/<?php echo $session; ?>/r_plot1"  download><button>Download</button></a>
+                                    </td>
+                                </tr>
+				<tr>
+                                    <td>
+                                        <a onclick="loadRamTwo()">Plot </a> <a href="uploads/<?php echo $session; ?>/r_plot1.pdf" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                             </table>
@@ -366,42 +461,40 @@ passthru("./pdb_std -i inputfile.pdb -A -B -C -E -F");
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a href="#">Identify</a>
+                                        <a onclick="loadMetOne()">Identify</a><a href="uploads/<?php echo $session; ?>/metal_1" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="#">Interactions</a> 
+                                        <a onclick="loadMetTwo()">Interactions</a> <a href="uploads/<?php echo $session; ?>/metal_2" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                 </div>
+                
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFourteen"><span class="glyphicon glyphicon-random">
-                            </span>Detect Salt Bridges</a>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSixteen"><span class="glyphicon glyphicon-magnet">
+                            </span>HBonds</a>
                         </h4>
                     </div>
-                    <div id="collapseFourteen" class="panel-collapse collapse">
+                    <div id="collapseSixteen" class="panel-collapse collapse">
                         <div class="panel-body">
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a href="#">Stabilizing</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="#">De-Stabilizing</a> 
+                                        <a onclick="loadHBOne()">Identify</a><a href="uploads/<?php echo $session; ?>/HBonds_BB" download> <button>Download</button></a>
+                                        <a href="uploads/<?php echo $session; ?>/placed_h.pdb" download> <button>Download modified pdb</button></a>
                                     </td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                 </div>
+                
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -435,21 +528,33 @@ passthru("./pdb_std -i inputfile.pdb -A -B -C -E -F");
             </div>
         </div>
         <div class="col-sm-9 col-md-9">
-            <div class="well" id="resulte" STYLE="font-family: monospace">
+            <pre><div class="well" id="resulte" STYLE="font-family: monospace">
+                <h1>Feature Name</h1>
+Result Display with related file links and visuals
+            </div> </pre>
+            <div class="well" id="imagee">
                 <h1>
-                    Feature Name</h1>
-                Result Display with related file links and visuals
+                    Visuals</h1>
+                <div class="thumbnail"><a target="_blank" href="" id="picc" >
+                <img class="img-responsive" src="" id="feat" ></a>
+ 		
+                </div>
+                <p><b>Click on picture to view in glmol</b></p>
+                <a href="" id="PyM" download> <button>Download PyMol Script</button></a>
             </div>
         </div>
     </div>
 </div>
 
- <footer style="background-color:black;position:relative;bottom:0;width:100%;"> 
-     <p style="color:gray;text-align:center;font-size:12px;">©  Copyright 2015-2016, The MAT Project, Hazra Lab.</p>
+ <footer style="background-color:black;position:fixed;bottom:0;width:100%;"> 
+     <p style="color:gray;text-align:center;font-size:12px;">©  Copyright 2015-2017, The MAT Project, Hazra Lab.</p>
 </footer>
 
 <script>
 function loadSeqOne() {
+document.getElementById("imagee").style.display = 'none';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'none';
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -461,6 +566,9 @@ function loadSeqOne() {
   xhttp.send();
 }
 function loadSeqTwo() {
+document.getElementById("imagee").style.display = 'none';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'none';
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -472,6 +580,9 @@ function loadSeqTwo() {
   xhttp.send();
 }
 function loadSaltOne() {
+document.getElementById("imagee").style.display = 'block';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'block';
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -481,8 +592,14 @@ function loadSaltOne() {
   };
   xhttp.open("GET", "uploads/<?php echo $session; ?>/detect_saltbridge_1", true);
   xhttp.send();
+document.getElementById("feat").src ="uploads/<?php echo $session; ?>/sb_glmol_sst.png";
+document.getElementById("picc").href ="uploads/<?php echo $session; ?>/sb_glmol.html";
+document.getElementById("PyM").href ="uploads/<?php echo $session; ?>/sb_script.py";
 }
 function loadSaltTwo() {
+document.getElementById("imagee").style.display = 'block';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'block';
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -492,8 +609,14 @@ function loadSaltTwo() {
   };
   xhttp.open("GET", "uploads/<?php echo $session; ?>/detect_saltbridge_2", true);
   xhttp.send();
+  document.getElementById("feat").src ="uploads/<?php echo $session; ?>/dsb_glmol_sst.png";
+  document.getElementById("picc").href ="uploads/<?php echo $session; ?>/dsb_glmol.html";
+  document.getElementById("PyM").href ="uploads/<?php echo $session; ?>/dsb_script.py";
 }
 function loadActOne() {
+document.getElementById("imagee").style.display = 'block';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'block';
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -503,8 +626,13 @@ function loadActOne() {
   };
   xhttp.open("GET", "uploads/<?php echo $session; ?>/Active_site1", true);
   xhttp.send();
+  document.getElementById("feat").src ="uploads/<?php echo $session; ?>/as1_glmol_sst.png";
+document.getElementById("PyM").href ="uploads/<?php echo $session; ?>/as1_script.py";
 }
 function loadActTwo() {
+document.getElementById("imagee").style.display = 'none';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'block';
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -516,6 +644,9 @@ function loadActTwo() {
   xhttp.send();
 }
 function loadActThree() {
+document.getElementById("imagee").style.display = 'none';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'block';
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -525,6 +656,176 @@ function loadActThree() {
   };
   xhttp.open("GET", "uploads/<?php echo $session; ?>/Active_site3", true);
   xhttp.send();
+}
+function loadBioOne() {
+document.getElementById("imagee").style.display = 'none';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'none';
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("resulte").innerHTML =
+      this.responseText.replace(/\n/g, '<br/>');
+    }
+  };
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/biochem_prop_1", true);
+  xhttp.send();
+}
+function loadBioTwo() {
+document.getElementById("imagee").style.display = 'none';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'none';
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("resulte").innerHTML =
+      this.responseText.replace(/\n/g, '<br/>');
+    }
+  };
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/biochem_prop_2", true);
+  xhttp.send();
+}
+function loadTemOne() {
+document.getElementById("imagee").style.display = 'none';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'none';
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("resulte").innerHTML =
+      this.responseText.replace(/\n/g, '<br/>');
+    }
+  };
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/Temp_plot2", true);
+  xhttp.send();
+}
+function loadRemOne() {
+document.getElementById("imagee").style.display = 'none';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'none';
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("resulte").innerHTML =
+      this.responseText.replace(/\n/g, '<br/>');
+    }
+  };
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/remove_1", true);
+  xhttp.send();
+}
+function loadRemTwo() {
+document.getElementById("imagee").style.display = 'none';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'none';
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("resulte").innerHTML =
+      this.responseText.replace(/\n/g, '<br/>');
+    }
+  };
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/remove_2", true);
+  xhttp.send();
+}
+function loadRemThree() {
+document.getElementById("imagee").style.display = 'none';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'none';
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("resulte").innerHTML =
+      this.responseText.replace(/\n/g, '<br/>');
+    }
+  };
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/remove_3", true);
+  xhttp.send();
+}
+function loadRemFour() {
+document.getElementById("imagee").style.display = 'none';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'none';
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("resulte").innerHTML =
+      this.responseText.replace(/\n/g, '<br/>');
+    }
+  };
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/remove_4", true);
+  xhttp.send();
+}
+function loadMetOne() {
+document.getElementById("imagee").style.display = 'none';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'none';
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("resulte").innerHTML =
+      this.responseText.replace(/\n/g, '<br/>');
+    }
+  };
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/metal_1", true);
+  xhttp.send();
+}
+
+function loadMetTwo() {
+document.getElementById("imagee").style.display = 'none';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'none';
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("resulte").innerHTML =
+      this.responseText.replace(/\n/g, '<br/>');
+    }
+  };
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/metal_2", true);
+  xhttp.send();
+}
+function loadRamOne() {
+document.getElementById("imagee").style.display = 'none';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'none';
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("resulte").innerHTML =
+      this.responseText.replace(/\n/g, '<br/>');
+    }
+  };
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/r_plot1", true);
+  xhttp.send();
+}
+function loadRamTwo() {
+document.getElementById("imagee").style.display = 'block';
+document.getElementById("resulte").style.display = 'none';
+document.getElementById("PyM").style.display = 'block';
+document.getElementById("feat").src ="uploads/<?php echo $session; ?>/r_plot1.png";
+}
+function loadTemTwo() {
+document.getElementById("imagee").style.display = 'block';
+document.getElementById("resulte").style.display = 'none';
+document.getElementById("PyM").style.display = 'block';
+document.getElementById("feat").src ="uploads/<?php echo $session; ?>/Temp_plot2.png";
+}
+function loadHBOne() {
+document.getElementById("imagee").style.display = 'block';
+document.getElementById("resulte").style.display = 'block';
+document.getElementById("PyM").style.display = 'block';
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("resulte").innerHTML =
+      this.responseText.replace(/\n/g, '<br/>');
+    }
+  };
+  xhttp.open("GET", "uploads/<?php echo $session; ?>/HBonds_BB", true);
+  xhttp.send();
+  document.getElementById("feat").src ="uploads/<?php echo $session; ?>/hbb_glmol_sst.png";
+  document.getElementById("picc").href ="uploads/<?php echo $session; ?>/hbb_glmol.html";   
+document.getElementById("PyM").href ="uploads/<?php echo $session; ?>/hbb_script.py";
 }
 </script>
 
