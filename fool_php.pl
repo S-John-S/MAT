@@ -1,0 +1,10 @@
+#print "running";
+system("./pdb_std -i inputfile.pdb -A");
+system("./pdb_std -i inputfile.pdb -B");
+system("./pdb_std -i inputfile.pdb -C");
+system("./pdb_std -i inputfile.pdb -D");
+system("./pdb_std -i inputfile.pdb -E");
+system("./pdb_std -i inputfile.pdb -F");
+system("./pdb_std -i inputfile.pdb -G");
+system("./pdb_std -i inputfile.pdb -H");
+system("./pdb_std -i inputfile.pdb -I");

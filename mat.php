@@ -38,7 +38,7 @@ session_start();
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li ><a class="navbar-brand" href="input.php" >MAT </a> </li>
-        <li ><a class="navbar-brand" href="science.html">Science</a></li>
+        <li ><a class="navbar-brand" href="science.html">Motivation</a></li>
         <li ><a class="navbar-brand" href="documentation.html">Documentation</a></li>
         <li><a class="navbar-brand" href="downloads.html">Downloads</a></li>
         <li><a class="navbar-brand" href="publication.html">Publication</a></li>
@@ -71,7 +71,12 @@ move_uploaded_file($_FILES['file']['tmp_name'], $dir_path);
 
 $my_file = 'inputfile.txt';
 $handle = fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);
+if ( $_FILES['file']['name'])
+{
 $data = $_FILES['file']['name'];
+} else {
+    $data = $_POST['pdb_id'].'.pdb';
+}
 fwrite($handle, $data);
 
 // We need to get the filename to open it in Pymol
@@ -172,6 +177,10 @@ chmod($cpath, 0777);
 $cpath = 'uploads/'.$session.'/imported.html'; 
 copy("imported.html", $cpath);
 chmod($cpath, 0777);
+    
+$cpath = 'uploads/'.$session.'/pymol_glmol.py'; 
+copy("pymol_glmol.py", $cpath);
+chmod($cpath, 0777);
 
 $cpath = 'uploads/'.$session.'/pymol_script_run.py'; 
 copy("pymol_script_run.py", $cpath);
@@ -181,13 +190,15 @@ $cpath = 'uploads/'.$session.'/inputfile.txt';
 copy("inputfile.txt", $cpath);
 chmod($cpath, 0777);
 
+$cpath = 'uploads/'.$session.'/fool_php.pl'; 
+copy("fool_php.pl", $cpath);
+chmod($cpath, 0777);
+
 $outpath = 'uploads/'.$session ;
-
+#$nwpath= '/home/hazralab/Documents/_shared/uploads/'.$session;
 chdir($outpath);
-
-//if ($_FILES['file']['name']) {
+if ($_FILES['file']['name']) {
 passthru("./pdb_std -i inputfile.pdb -A");
-passthru("./pdb_std -i inputfile.pdb -B");
 passthru("./pdb_std -i inputfile.pdb -C");
 passthru("./pdb_std -i inputfile.pdb -D");
 passthru("./pdb_std -i inputfile.pdb -E");
@@ -196,12 +207,23 @@ passthru("./pdb_std -i inputfile.pdb -G");
 passthru("./pdb_std -i inputfile.pdb -H");
 passthru("./pdb_std -i inputfile.pdb -I");
 
-//} else {
+} else {
+
+$pppid = $_POST['pdb_id'];
+passthru("./pdb_std -p $pppid -A");
+passthru("./pdb_std -p $pppid -B");
+passthru("./pdb_std -p $pppid -C");
+passthru("./pdb_std -p $pppid -D");
+passthru("./pdb_std -p $pppid -E");
+passthru("./pdb_std -p $pppid -F");
+passthru("./pdb_std -p $pppid -G");
+passthru("./pdb_std -p $pppid -H");
+passthru("./pdb_std -p $pppid -I");
+
 //passthru("./pdb_std -p $_POST['pdb_id'] -A -B -C -D -E -F -G -H");
-//}
-passthru("python tem_plot.py");
-exec("Rscript contour.R");
-exec("python pymol_script_run.py");
+}
+
+
 
 ?>
 
@@ -273,17 +295,27 @@ exec("python pymol_script_run.py");
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a onclick="loadActOne()">Select Ligand</a> <a href="uploads/<?php echo $session; ?>/Active_site1" download> <button>Download</button></a>
+                                        <a onclick="loadActOne()">Ligands List</a> <a href="uploads/<?php echo $session; ?>/Active_site1" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a onclick="loadActTwo()">Display Active Site Residue</a> <a href="uploads/<?php echo $session; ?>/Active_site2" download> <button>Download</button></a>
+                                        <a onclick="loadActTwo()">Active Site Residues</a> <a href="uploads/<?php echo $session; ?>/Active_site2" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a onclick="loadActThree()">Show Interaction</a> <a href="uploads/<?php echo $session; ?>/Active_site3" download> <button>Download</button></a>
+                                        <a onclick="loadActTwoImg()">Active Site Residues' Visuals</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a onclick="loadActThree()">Table of Interactions</a> <a href="uploads/<?php echo $session; ?>/Active_site3" download> <button>Download</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a onclick="loadActThreeImg()">Interactions' Visuals</a> 
                                     </td>
                                 </tr>
                             </table>
@@ -357,23 +389,23 @@ exec("python pymol_script_run.py");
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a onclick="loadRemOne()">HETATOM</a><a href="uploads/<?php echo $session; ?>/remove_1" download> <button>Download</button></a>
+                                        <a onclick="loadRemOne()">Solvent</a><a href="uploads/<?php echo $session; ?>/remove_1" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a onclick="loadRemTwo()">ANISOU </a> <a href="uploads/<?php echo $session; ?>/remove_2" download> <button>Download</button></a>
+                                        <a onclick="loadRemTwo()">Water</a> <a href="uploads/<?php echo $session; ?>/remove_2" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a onclick="loadRemThree()">Header</a><a href="uploads/<?php echo $session; ?>/remove_3" download> <button>Download</button></a>
+                                        <a onclick="loadRemThree()">Hydrogen</a><a href="uploads/<?php echo $session; ?>/remove_3" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <a onclick="loadRemFour()">
-                                            Solvent</a><a href="uploads/<?php echo $session; ?>/remove_4" download> <button>Download</button></a>
+                                            HETATM</a><a href="uploads/<?php echo $session; ?>/remove_4" download> <button>Download</button></a>
                                     </td>
                                 </tr>
                             </table>
@@ -533,15 +565,32 @@ exec("python pymol_script_run.py");
 Result Display with related file links and visuals
             </div> </pre>
             <div class="well" id="imagee">
-                <h1>
-                    Visuals</h1>
+                <h3>
+                    Visuals</h3>
                 <div class="thumbnail"><a target="_blank" href="" id="picc" >
                 <img class="img-responsive" src="" id="feat" ></a>
  		
                 </div>
-                <p><b>Click on picture to view in glmol</b></p>
-                <a href="" id="PyM" download> <button>Download PyMol Script</button></a>
+                <div  id="PyM">
+                <p><b style="color:red;">Please wait until images are generated.</b><b>Click on picture to view in glmol</b></p>
+                    <a href="" download> <button>Download PyMol Script</button></a>
+                    </div>
             </div>
+            <?php
+    $output = "Active_site1";
+    $output_file = fopen(getcwd()."/".$output,"r");
+    $content = fread($output_file, filesize(getcwd()."/".$output));
+    $lines = explode("\n", $content);
+    fclose($output_file);
+    $i=0;$j=0;
+        foreach ( $lines as $line ) {
+          $i++;$j=$i-2;
+        if($i==1){ continue;}
+if($line==""){continue;}
+echo ("<div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 \" ><div class=\"well well-sm\" id=\"hodor$i\"><p> $line </p><div class=\"thumbnail\"><a target=\"_blank\" href=\"uploads/$session/as2_ligand$j.html\"><img id=\"niban$i\" class=\"img-responsive\" src=\"\"></a></div><p><b style=\"color:red;\">Please wait until images are generated.</b><b>Click on picture to view in glmol</b></p><a href=\"uploads/$session/as2_script_ligand$j.py\" download><button>Download PyMol Script</button></a></div></div>");
+echo ("<div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 \" ><div class=\"well well-sm\" id=\"holdthedoor$i\"><p> $line </p><div class=\"thumbnail\"><a target=\"_blank\" href=\"uploads/$session/as3_ligand$j.html\"><img id=\"sanban$i\" class=\"img-responsive\" src=\"\"></a></div><p><b style=\"color:red;\">Please wait until images are generated.</b><b>Click on picture to view in glmol</b></p><a href=\"uploads/$session/as3_script_ligand$j.py\" download><button>Download PyMol Script</button></a></div></div>");
+}
+ ?>
         </div>
     </div>
 </div>
@@ -551,7 +600,34 @@ Result Display with related file links and visuals
 </footer>
 
 <script>
+    //we need document.ready call to make sure that DOM loaded before we try to bind anything
+        $(document).ready(function() {
+            //Here we bind click event
+            $('body').bind('click', function(e){e.preventDefault();
+                //This is what happens on click - we send AJAX request
+                var jqueryXHR = $.ajax({
+                    'type': 'POST',
+                    'url': 'http://mat.iitr.ac.in/img_gen.php',
+                    'dataType': 'json'
+                   });
+                $('body').unbind('click');
+
+            })
+        });
+    var timer;
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+    }
+    
 function loadSeqOne() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'none';
 document.getElementById("resulte").style.display = 'block';
 document.getElementById("PyM").style.display = 'none';
@@ -566,9 +642,15 @@ document.getElementById("PyM").style.display = 'none';
   xhttp.send();
 }
 function loadSeqTwo() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'none';
 document.getElementById("resulte").style.display = 'block';
-document.getElementById("PyM").style.display = 'none';
+    document.getElementById("PyM").style.display = 'none';
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -580,6 +662,12 @@ document.getElementById("PyM").style.display = 'none';
   xhttp.send();
 }
 function loadSaltOne() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'block';
 document.getElementById("resulte").style.display = 'block';
 document.getElementById("PyM").style.display = 'block';
@@ -592,11 +680,23 @@ document.getElementById("PyM").style.display = 'block';
   };
   xhttp.open("GET", "uploads/<?php echo $session; ?>/detect_saltbridge_1", true);
   xhttp.send();
+  document.getElementById("feat").src ="uploads/<?php echo $session; ?>/sb_glmol_sst.png";
+document.getElementById("picc").href ="uploads/<?php echo $session; ?>/sb_glmol.html";
+document.getElementById("PyM").href ="uploads/<?php echo $session; ?>/sb_script.py";
+  clearInterval(timer);
+ timer = setInterval(function(){
 document.getElementById("feat").src ="uploads/<?php echo $session; ?>/sb_glmol_sst.png";
 document.getElementById("picc").href ="uploads/<?php echo $session; ?>/sb_glmol.html";
 document.getElementById("PyM").href ="uploads/<?php echo $session; ?>/sb_script.py";
+},1000);
 }
 function loadSaltTwo() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'block';
 document.getElementById("resulte").style.display = 'block';
 document.getElementById("PyM").style.display = 'block';
@@ -612,8 +712,20 @@ document.getElementById("PyM").style.display = 'block';
   document.getElementById("feat").src ="uploads/<?php echo $session; ?>/dsb_glmol_sst.png";
   document.getElementById("picc").href ="uploads/<?php echo $session; ?>/dsb_glmol.html";
   document.getElementById("PyM").href ="uploads/<?php echo $session; ?>/dsb_script.py";
+  clearInterval(timer);
+ timer = setInterval(function(){
+  document.getElementById("feat").src ="uploads/<?php echo $session; ?>/dsb_glmol_sst.png";
+  document.getElementById("picc").href ="uploads/<?php echo $session; ?>/dsb_glmol.html";
+  document.getElementById("PyM").href ="uploads/<?php echo $session; ?>/dsb_script.py";
+},1000);
 }
 function loadActOne() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'block';
 document.getElementById("resulte").style.display = 'block';
 document.getElementById("PyM").style.display = 'block';
@@ -628,8 +740,19 @@ document.getElementById("PyM").style.display = 'block';
   xhttp.send();
   document.getElementById("feat").src ="uploads/<?php echo $session; ?>/as1_glmol_sst.png";
 document.getElementById("PyM").href ="uploads/<?php echo $session; ?>/as1_script.py";
+  clearInterval(timer);
+ timer = setInterval(function(){
+  document.getElementById("feat").src ="uploads/<?php echo $session; ?>/as1_glmol_sst.png";
+document.getElementById("PyM").href ="uploads/<?php echo $session; ?>/as1_script.py";
+},1000);
 }
 function loadActTwo() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'none';
 document.getElementById("resulte").style.display = 'block';
 document.getElementById("PyM").style.display = 'block';
@@ -644,6 +767,12 @@ document.getElementById("PyM").style.display = 'block';
   xhttp.send();
 }
 function loadActThree() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'none';
 document.getElementById("resulte").style.display = 'block';
 document.getElementById("PyM").style.display = 'block';
@@ -658,9 +787,16 @@ document.getElementById("PyM").style.display = 'block';
   xhttp.send();
 }
 function loadBioOne() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'none';
 document.getElementById("resulte").style.display = 'block';
-document.getElementById("PyM").style.display = 'none';
+    document.getElementById("PyM").style.display = 'none';
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -672,9 +808,16 @@ document.getElementById("PyM").style.display = 'none';
   xhttp.send();
 }
 function loadBioTwo() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'none';
 document.getElementById("resulte").style.display = 'block';
-document.getElementById("PyM").style.display = 'none';
+    document.getElementById("PyM").style.display = 'none';
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -686,9 +829,16 @@ document.getElementById("PyM").style.display = 'none';
   xhttp.send();
 }
 function loadTemOne() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'none';
 document.getElementById("resulte").style.display = 'block';
-document.getElementById("PyM").style.display = 'none';
+    document.getElementById("PyM").style.display = 'none';
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -700,9 +850,16 @@ document.getElementById("PyM").style.display = 'none';
   xhttp.send();
 }
 function loadRemOne() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'none';
 document.getElementById("resulte").style.display = 'block';
-document.getElementById("PyM").style.display = 'none';
+    document.getElementById("PyM").style.display = 'none';
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -714,9 +871,16 @@ document.getElementById("PyM").style.display = 'none';
   xhttp.send();
 }
 function loadRemTwo() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'none';
 document.getElementById("resulte").style.display = 'block';
-document.getElementById("PyM").style.display = 'none';
+    document.getElementById("PyM").style.display = 'none';
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -728,9 +892,16 @@ document.getElementById("PyM").style.display = 'none';
   xhttp.send();
 }
 function loadRemThree() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'none';
 document.getElementById("resulte").style.display = 'block';
-document.getElementById("PyM").style.display = 'none';
+    document.getElementById("PyM").style.display = 'none';
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -742,9 +913,16 @@ document.getElementById("PyM").style.display = 'none';
   xhttp.send();
 }
 function loadRemFour() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'none';
 document.getElementById("resulte").style.display = 'block';
-document.getElementById("PyM").style.display = 'none';
+    document.getElementById("PyM").style.display = 'none';
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -756,9 +934,16 @@ document.getElementById("PyM").style.display = 'none';
   xhttp.send();
 }
 function loadMetOne() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'none';
 document.getElementById("resulte").style.display = 'block';
-document.getElementById("PyM").style.display = 'none';
+    document.getElementById("PyM").style.display = 'none';
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -771,9 +956,16 @@ document.getElementById("PyM").style.display = 'none';
 }
 
 function loadMetTwo() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'none';
 document.getElementById("resulte").style.display = 'block';
-document.getElementById("PyM").style.display = 'none';
+    document.getElementById("PyM").style.display = 'none';
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -785,9 +977,16 @@ document.getElementById("PyM").style.display = 'none';
   xhttp.send();
 }
 function loadRamOne() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'none';
 document.getElementById("resulte").style.display = 'block';
-document.getElementById("PyM").style.display = 'none';
+    document.getElementById("PyM").style.display = 'none';
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -799,21 +998,52 @@ document.getElementById("PyM").style.display = 'none';
   xhttp.send();
 }
 function loadRamTwo() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'block';
 document.getElementById("resulte").style.display = 'none';
-document.getElementById("PyM").style.display = 'block';
+    document.getElementById("PyM").style.display = 'none';
 document.getElementById("feat").src ="uploads/<?php echo $session; ?>/r_plot1.png";
+    document.getElementById("picc").href ="uploads/<?php echo $session; ?>/r_plot1.png";
+    clearInterval(timer);
+ timer = setInterval(function(){
+document.getElementById("feat").src ="uploads/<?php echo $session; ?>/r_plot1.png";
+    document.getElementById("picc").href ="uploads/<?php echo $session; ?>/r_plot1.png";
+},1000);
 }
 function loadTemTwo() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'block';
 document.getElementById("resulte").style.display = 'none';
-document.getElementById("PyM").style.display = 'block';
+    document.getElementById("PyM").style.display = 'none';
+    document.getElementById("feat").src ="uploads/<?php echo $session; ?>/Temp_plot2.png";
+    document.getElementById("picc").href ="uploads/<?php echo $session; ?>/Temp_plot2.png";
+    clearInterval(timer);
+ timer = setInterval(function(){
 document.getElementById("feat").src ="uploads/<?php echo $session; ?>/Temp_plot2.png";
+    document.getElementById("picc").href ="uploads/<?php echo $session; ?>/Temp_plot2.png";
+},1000);
 }
 function loadHBOne() {
+    var count;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ 
+    }
 document.getElementById("imagee").style.display = 'block';
 document.getElementById("resulte").style.display = 'block';
-document.getElementById("PyM").style.display = 'block';
+    document.getElementById("PyM").style.display = 'block';
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -823,16 +1053,70 @@ document.getElementById("PyM").style.display = 'block';
   };
   xhttp.open("GET", "uploads/<?php echo $session; ?>/HBonds_BB", true);
   xhttp.send();
+document.getElementById("feat").src ="uploads/<?php echo $session; ?>/hbb_glmol_sst.png";
+  document.getElementById("picc").href ="uploads/<?php echo $session; ?>/hbb_glmol.html";   
+document.getElementById("PyM").href ="uploads/<?php echo $session; ?>/hbb_script.py";
+  clearInterval(timer);
+ timer = setInterval(function(){
   document.getElementById("feat").src ="uploads/<?php echo $session; ?>/hbb_glmol_sst.png";
   document.getElementById("picc").href ="uploads/<?php echo $session; ?>/hbb_glmol.html";   
 document.getElementById("PyM").href ="uploads/<?php echo $session; ?>/hbb_script.py";
+},1000);
+}
+
+function loadActTwoImg() {
+   var count;
+   var ichiban;
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'block';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'none';
+ichiban=count-2;
+
+ document.getElementById('niban'+count.toString()).src = "uploads/<?php echo $session; ?>/as2_ligand"+ichiban.toString()+".png";
+document.getElementById('sanban'+count.toString()).src = "uploads/<?php echo $session; ?>/as3_ligand"+ichiban.toString()+".png";
+    }
+    clearInterval(timer);
+ timer = setInterval(function(){
+for(count=2;count < <?php echo $i ?>;count++){
+ichiban=count-2;
+document.getElementById('niban'+count.toString()).src = "uploads/<?php echo $session; ?>/as2_ligand"+ichiban.toString()+".png";
+document.getElementById('sanban'+count.toString()).src = "uploads/<?php echo $session; ?>/as3_ligand"+ichiban.toString()+".png";
+    }
+},1000)
+document.getElementById("imagee").style.display = 'none';
+document.getElementById("resulte").style.display = 'none';
+    document.getElementById("PyM").style.display = 'none';
+
+    
+}
+function loadActThreeImg() {
+var count;
+var ichiban
+    for(count=2;count < <?php echo $i ?>;count++){
+document.getElementById('hodor'+count.toString()).style.display = 'none';
+        document.getElementById('holdthedoor'+count.toString()).style.display = 'block';
+ichiban=count-2;
+ document.getElementById('niban'+count.toString()).src = "uploads/<?php echo $session; ?>/as2_ligand"+ichiban.toString()+".png";
+document.getElementById('sanban'+count.toString()).src = "uploads/<?php echo $session; ?>/as3_ligand"+ichiban.toString()+".png";
+         
+    }
+    clearInterval(timer);
+ timer = setInterval(function(){
+for(count=2;count < <?php echo $i ?>;count++){
+ichiban=count-2;
+document.getElementById('niban'+count.toString()).src = "uploads/<?php echo $session; ?>/as2_ligand"+ichiban.toString()+".png";
+document.getElementById('sanban'+count.toString()).src = "uploads/<?php echo $session; ?>/as3_ligand"+ichiban.toString()+".png";
+    }
+},1000)
+document.getElementById("imagee").style.display = 'none';
+document.getElementById("resulte").style.display = 'none';
+    document.getElementById("PyM").style.display = 'none';
+
+    
 }
 </script>
 
 </body>
 </html>
  
-<?php
-session_unset(); 
-session_destroy(); 
-?>
+

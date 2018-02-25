@@ -38,7 +38,7 @@ session_start();
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li ><a class="navbar-brand" href="input.php" >MAT </a> </li>
-        <li ><a class="navbar-brand" href="science.html">Science</a></li>
+        <li ><a class="navbar-brand" href="science.html">Motivation</a></li>
         <li ><a class="navbar-brand" href="documentation.html">Documentation</a></li>
         <li><a class="navbar-brand" href="downloads.html">Downloads</a></li>
         <li><a class="navbar-brand" href="publication.html">Publication</a></li>
@@ -98,7 +98,7 @@ session_start();
       </div>
     </div>
   </div>
-  <div class="panel panel-default">
+  <!--<div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
@@ -140,7 +140,7 @@ session_start();
 
       </div>
     </div>
-  </div>
+  </div>-->
   
 </div>
 </div>
@@ -148,7 +148,7 @@ session_start();
 
 
  <footer style="background-color:black;position:fixed;bottom:0;width:100%;"> 
-     <p style="color:gray;text-align:center;font-size:12px;">©  Copyright 2015-2016, The MAT Project, Hazra Lab.</p>
+     <p style="color:gray;text-align:center;font-size:12px;">©  Copyright 2015-2017, The MAT Project, Hazra Lab.</p>
 </footer>
 </body>
 </html>
