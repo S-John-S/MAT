@@ -1,0 +1,3 @@
+Data folder should be here necessarily. 
+
+Also, do not forget to change path to this directory in the contour.R which is along with the python scripts.
