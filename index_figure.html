@@ -20,7 +20,7 @@
 }
 
 .node--internal text {
-  font: 17px  sans-serif;
+  font: 21px  sans-serif;
   font-weight: bold;
 }
 
@@ -32,27 +32,26 @@
 }
 
 </style>
-<svg width="1280" height="1280"></svg>
+<svg width="1480" height="1280"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
 var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height"),
-    g = svg.append("g").attr("transform", "translate(" + (width / 2 - 15) + "," + (height / 2 + 25) + ")");
+    g = svg.append("g").attr("transform", "translate(" + (width / 2 + 40) + "," + (height / 2 + 90) + ")");
 
 var stratify = d3.stratify()
     .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
 
-var tree = d3.cluster()
-    .size([360, 390])
+var tree = d3.tree()
+    .size([360, 500])
     .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
 
 d3.csv("figure.csv", function(error, data) {
   if (error) throw error;
 
-  var root = tree(stratify(data)
-      .sort(function(a, b) { return (a.height - b.height) || a.id.localeCompare(b.id); }));
+  var root = tree(stratify(data));
 
   var link = g.selectAll(".link")
     .data(root.descendants().slice(1))
@@ -88,4 +87,4 @@ function project(x, y) {
 }
 
 </script>
- 
+
