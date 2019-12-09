@@ -20,9 +20,9 @@ PDB.ProteinInfo.Remark.Surface_area
 PDB.ProteinInfo.Remark.R_value
 PDB.ProteinInfo.Remark.Experimental_technique
 PDB.ProteinInfo.Matrix,
-PDB.ProteinInfo.Matrix,CRYST1
-PDB.ProteinInfo.Matrix,ORIGX[1-3]
-PDB.ProteinInfo.Matrix,SCALE[1-3]
+PDB.ProteinInfo.Matrix.CRYST1
+PDB.ProteinInfo.Matrix.ORIGX[1-3]
+PDB.ProteinInfo.Matrix.SCALE[1-3]
 PDB.Atom,
 PDB.Atom.Section,
 PDB.Atom.Section.Atom_name
